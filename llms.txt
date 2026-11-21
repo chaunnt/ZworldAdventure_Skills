@@ -9,19 +9,14 @@ Cách đọc để tiết kiệm token:
 
 Danh mục máy đọc (JSON): https://chaunnt.github.io/ZworldAdventure_Skills/skills.json
 
-## Pháp lý & văn bản nhà nước
+## Cách viết văn bản
 
-Soạn thảo, trình bày và rà soát văn bản theo quy định pháp luật Việt Nam. (1 skill)
+Soạn thảo, trình bày, rà soát văn bản: văn bản pháp luật, tài liệu nghiệp vụ, tệp skill cho AI. (2 skill)
 
-- [viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025](https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md): Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4.
-
-## Hệ thống skill
-
-Quy chuẩn và công cụ để viết, đóng gói, phân phối skill cho nhiều nền tảng AI. (1 skill)
-
-- [viet-skill](https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-skill/SKILL.md): Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói.
+- [cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md): Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4.
+- [cach-viet-van-ban-skill-ai-da-nen-tang](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-skill-ai-da-nen-tang/SKILL.md): Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói.
 
 ## Optional
 
-- [Hướng dẫn cài đặt theo nền tảng](https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-skill/references/nen-tang.md): Claude, ChatGPT, Gemini, Codex
+- [Hướng dẫn cài đặt theo nền tảng](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-skill-ai-da-nen-tang/references/nen-tang.md): Claude, ChatGPT, Gemini, Codex
 - [Mã nguồn](https://github.com/chaunnt/ZworldAdventure_Skills): repo GitHub

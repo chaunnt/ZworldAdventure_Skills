@@ -11,8 +11,8 @@ dùng được với Claude, ChatGPT, Gemini, Codex, Cursor, Copilot...
 <!-- SKILLS:START -->
 | Skill | Danh mục | Tóm tắt |
 |---|---|---|
-| [`viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025`](skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md) | Pháp lý & văn bản nhà nước | Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4. |
-| [`viet-skill`](skills/viet-skill/SKILL.md) | Hệ thống skill | Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói. |
+| [`cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025`](skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md) | Cách viết văn bản | Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4. |
+| [`cach-viet-van-ban-skill-ai-da-nen-tang`](skills/cach-viet-van-ban-skill-ai-da-nen-tang/SKILL.md) | Cách viết văn bản | Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói. |
 <!-- SKILLS:END -->
 
 ## Cấu trúc
@@ -39,12 +39,12 @@ AGENTS.md                  # hướng dẫn cho agent (CLAUDE.md, GEMINI.md tr�
 - **ChatGPT (Custom GPT/Project)**, **Gemini (Gem)**: upload `dist/<ten>/<ten>.prompt.md` vào Knowledge.
 - **Codex / Gemini CLI / agent khác**: chép `skills/<ten>/` vào thư mục skills của công cụ, hoặc clone repo.
 
-Chi tiết: [`huong-dan.html`](huong-dan.html), [`skills/viet-skill/references/nen-tang.md`](skills/viet-skill/references/nen-tang.md).
+Chi tiết: [`huong-dan.html`](huong-dan.html), [`skills/cach-viet-van-ban-skill-ai-da-nen-tang/references/nen-tang.md`](skills/cach-viet-van-ban-skill-ai-da-nen-tang/references/nen-tang.md).
 
 ## Thêm skill mới
 
 ```bash
-mkdir -p skills/<ten-skill> && cp skills/viet-skill/assets/SKILL.template.md skills/<ten-skill>/SKILL.md
+mkdir -p skills/<ten-skill> && cp skills/cach-viet-van-ban-skill-ai-da-nen-tang/assets/SKILL.template.md skills/<ten-skill>/SKILL.md
 # điền nội dung, khai báo metadata.category (categories.json) và metadata.summary
 python3 scripts/build_skills.py
 ```

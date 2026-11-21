@@ -1,9 +1,0 @@
-# Pháp lý & văn bản nhà nước
-
-> Soạn thảo, trình bày và rà soát văn bản theo quy định pháp luật Việt Nam.
-
-Mỗi dòng là một skill. Mở SKILL.md của skill phù hợp; chỉ mở references/ khi SKILL.md chỉ dẫn.
-
-## Skills
-
-- [viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025](https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md): Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4.

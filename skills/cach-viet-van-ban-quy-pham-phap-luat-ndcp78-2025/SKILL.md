@@ -1,11 +1,11 @@
 ---
-name: viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025
+name: cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025
 description: Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật Việt Nam (luật, pháp lệnh, nghị quyết, nghị định, quyết định, thông tư, thông tư liên tịch, lệnh) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết hoặc trình bày văn bản QPPL, Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ ban hành, chương/điều/khoản/điểm, chữ ký TM./KT., nơi nhận, phụ lục, sơ đồ bố trí trang A4, hoặc kiểm tra văn bản có đúng thể thức NĐ 78/2025 không.
 license: Xem LICENSE ở thư mục gốc repo
 metadata:
   version: "1.1.0"
   language: vi
-  category: phap-ly-van-ban
+  category: cach-viet-van-ban
   summary: "Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4."
   keywords: "văn bản quy phạm pháp luật, thể thức văn bản, Nghị định 78/2025/NĐ-CP, trình bày văn bản, nghị định, thông tư, quyết định"
   source: "Nghị định số 78/2025/NĐ-CP ngày 01/4/2025 của Chính phủ - Phụ lục thể thức, kỹ thuật trình bày văn bản QPPL (bản đăng trên Báo điện tử Chính phủ, 09/04/2025)"

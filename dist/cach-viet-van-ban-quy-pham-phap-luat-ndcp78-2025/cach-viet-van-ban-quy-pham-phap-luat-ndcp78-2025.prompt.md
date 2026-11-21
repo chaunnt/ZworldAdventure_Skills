@@ -1,8 +1,8 @@
-# SKILL: viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025
+# SKILL: cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025
 
 > Tệp này gộp toàn bộ skill thành một tài liệu duy nhất để dùng với ChatGPT, Gemini hoặc model bất kỳ.
 > Hãy làm theo phần HƯỚNG DẪN CHÍNH; các phần TÀI LIỆU KÈM THEO là tài liệu tra cứu được nhắc tới trong hướng dẫn.
-> Nguồn: https://github.com/chaunnt/ZworldAdventure_Skills/tree/main/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025
+> Nguồn: https://github.com/chaunnt/ZworldAdventure_Skills/tree/main/skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025
 
 **Mô tả / khi nào dùng:** Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật Việt Nam (luật, pháp lệnh, nghị quyết, nghị định, quyết định, thông tư, thông tư liên tịch, lệnh) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết hoặc trình bày văn bản QPPL, Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ ban hành, chương/điều/khoản/điểm, chữ ký TM./KT., nơi nhận, phụ lục, sơ đồ bố trí trang A4, hoặc kiểm tra văn bản có đúng thể thức NĐ 78/2025 không.
 

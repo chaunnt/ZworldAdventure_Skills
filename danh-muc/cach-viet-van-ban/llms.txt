@@ -1,0 +1,10 @@
+# Cách viết văn bản
+
+> Soạn thảo, trình bày, rà soát văn bản: văn bản pháp luật, tài liệu nghiệp vụ, tệp skill cho AI.
+
+Mỗi dòng là một skill. Mở SKILL.md của skill phù hợp; chỉ mở references/ khi SKILL.md chỉ dẫn.
+
+## Skills
+
+- [cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md): Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4.
+- [cach-viet-van-ban-skill-ai-da-nen-tang](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-skill-ai-da-nen-tang/SKILL.md): Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói.

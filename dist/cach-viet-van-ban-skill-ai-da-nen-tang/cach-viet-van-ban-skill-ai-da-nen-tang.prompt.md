@@ -1,8 +1,8 @@
-# SKILL: viet-skill
+# SKILL: cach-viet-van-ban-skill-ai-da-nen-tang
 
 > Tệp này gộp toàn bộ skill thành một tài liệu duy nhất để dùng với ChatGPT, Gemini hoặc model bất kỳ.
 > Hãy làm theo phần HƯỚNG DẪN CHÍNH; các phần TÀI LIỆU KÈM THEO là tài liệu tra cứu được nhắc tới trong hướng dẫn.
-> Nguồn: https://github.com/chaunnt/ZworldAdventure_Skills/tree/main/skills/viet-skill
+> Nguồn: https://github.com/chaunnt/ZworldAdventure_Skills/tree/main/skills/cach-viet-van-ban-skill-ai-da-nen-tang
 
 **Mô tả / khi nào dùng:** Tạo mới hoặc chỉnh sửa một skill trong repo ZworldAdventure_Skills theo chuẩn Agent Skills (SKILL.md + references + assets) để dùng được trên Claude (claude.ai, Claude Code, API), ChatGPT (Custom GPT, Codex), Gemini (Gem, Gemini CLI) và các agent khác. Dùng khi người dùng muốn "viết skill", "tạo skill mới", "chuyển tài liệu/PDF/quy trình thành skill", "đóng gói skill cho ChatGPT/Gemini", hoặc rà soát một skill có đúng chuẩn không.
 
@@ -30,10 +30,47 @@ skills/<ten-skill>/
 └── scripts/            # tuỳ chọn: mã chạy được (python/bash), chỉ dùng thư viện chuẩn nếu có thể
 ```
 
-- `<ten-skill>`: **chỉ chữ thường** a–z, số, gạch nối; **không dấu**, tối đa 64 ký tự; trùng với `name` trong frontmatter.
-  Chữ hoa bị Claude và nhiều nền tảng từ chối → `NĐ-CP 78/2025` viết thành `ndcp78-2025`.
-  Ví dụ: `viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025`, `bao-gia-bao-hiem`.
+- `<ten-skill>` phải theo **Quy chuẩn đặt tên skill** ở mục dưới; trùng với `name` trong frontmatter.
 - Đường dẫn trong SKILL.md luôn **tương đối** so với thư mục skill (vd references/quy-dinh.html), dùng `/`.
+
+## Quy chuẩn đặt tên skill (bắt buộc)
+
+Tên skill là thứ agent và người thấy đầu tiên khi lướt danh sách, nên phải **đọc tên là hiểu skill làm gì**,
+và các skill cùng loại phải **nằm cạnh nhau** khi sắp xếp theo tên.
+
+**Cấu trúc:**
+
+```
+<danh-muc>-<doi-tuong>[-<pham-vi>][-<can-cu>]
+```
+
+| Phần | Bắt buộc | Quy tắc | Ví dụ |
+|---|---|---|---|
+| `danh-muc` | Có | Đúng bằng slug danh mục trong `categories.json`. Dạng `cach-<dong-tu>-<doi-tuong-chung>`. | `cach-viet-van-ban`, `cach-tra-cuu-thong-tin`, `cach-tinh-phi` |
+| `doi-tuong` | Có | Cụ thể: loại văn bản / nghiệp vụ / sản phẩm mà skill xử lý. Không dùng từ chung chung. | `quy-pham-phap-luat`, `skill-ai`, `hop-dong-bao-hiem` |
+| `pham-vi` | Khi cần phân biệt | Giới hạn hoặc biến thể: đối tượng dùng, nền tảng, mức độ. | `da-nen-tang`, `ca-nhan`, `doanh-nghiep` |
+| `can-cu` | Khi dựa trên văn bản pháp lý/tiêu chuẩn | Viết từ số ký hiệu: `<loai-co-quan><so>-<nam>`, bỏ dấu, viết liền phần chữ. | NĐ-CP 78/2025 → `ndcp78-2025`; TT 01/2025/TT-BTP → `ttbtp01-2025` |
+
+**Ràng buộc kỹ thuật** (script build kiểm tra, sai là lỗi):
+- Chỉ chữ thường a–z, số 0–9, gạch nối; **không dấu**, không chữ hoa (Claude và nhiều nền tảng từ chối chữ hoa), tối đa 64 ký tự.
+- Phải bắt đầu bằng `<danh-muc>-` với `danh-muc` = `metadata.category`.
+
+**Quy tắc nội dung:**
+- Viết đầy đủ tiếng Việt không dấu, **không viết tắt** trừ ký hiệu văn bản pháp lý (`ndcp`, `tt`, `qh`) và từ phổ biến (`ai`, `pdf`).
+- Cấm tên mơ hồ: `helper`, `tool`, `misc`, `chung`, `moi`, `test`, `v2`.
+- Phiên bản của skill để trong `metadata.version`, **không** đưa vào tên. Chỉ đưa năm vào tên khi nó là một phần căn cứ (`-2025`).
+- Hai skill cùng đối tượng nhưng khác căn cứ thì khác ở phần `can-cu`
+  (vd `cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025` và một bản thay thế sau này `...-ndcp12-2027`).
+- Cần danh mục mới: thêm vào `categories.json` trước (slug theo dạng `cach-<dong-tu>-<doi-tuong-chung>`, có `title`, `summary`).
+- Đổi tên skill là thay đổi lớn (link, gói cài đặt đều đổi) — chỉ đổi khi tên hiện tại sai quy chuẩn.
+
+**Ví dụ trong repo:**
+
+| Tên | Đọc là |
+|---|---|
+| `cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025` | Cách viết văn bản / quy phạm pháp luật / theo NĐ-CP 78/2025 |
+| `cach-viet-van-ban-skill-ai-da-nen-tang` | Cách viết văn bản / skill cho AI / dùng đa nền tảng |
+
 
 ## Frontmatter
 
@@ -46,7 +83,7 @@ license: Xem LICENSE ở thư mục gốc repo
 metadata:                       # chỉ dùng cặp khoá-giá trị chuỗi
   version: "1.0.0"
   language: vi
-  category: phap-ly-van-ban     # bắt buộc trong repo này: slug danh mục, khai báo trong categories.json
+  category: cach-viet-van-ban   # bắt buộc: slug danh mục trong categories.json = tiền tố của name
   summary: "≤ 160 ký tự"        # bắt buộc: 1 câu ngắn, hiện trong llms.txt và danh sách
   keywords: "từ khoá 1, từ khoá 2"  # khuyến nghị: dùng cho SEO và tìm kiếm
   source: "[tài liệu gốc, nếu có]"
@@ -93,7 +130,7 @@ Quy tắc viết:
    - bản ASCII trong `<pre>`;
    - khối dữ liệu máy đọc `<script type="application/json">`;
    - (tuỳ chọn) dựng lại hình bằng HTML/CSS hoặc SVG có `aria-label`.
-   Xem ví dụ chuẩn: `skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/references/so-do-bo-tri.html`.
+   Xem ví dụ chuẩn: `skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/references/so-do-bo-tri.html`.
 5. Tóm tắt phần quan trọng nhất thành bảng tra nhanh + checklist trong SKILL.md.
 
 Vì sao HTML5 cho references: một tệp vừa mở được bằng trình duyệt cho người đọc, vừa là văn bản có cấu trúc rõ ràng cho
@@ -122,7 +159,7 @@ Mẫu khởi đầu: sao chép `assets/SKILL.template.md` thành `skills/<ten-sk
 
 ## Checklist skill hoàn chỉnh
 
-- [ ] Thư mục `skills/<ten>/`, tên không dấu, khớp `name`.
+- [ ] Tên đúng **Quy chuẩn đặt tên skill**: bắt đầu bằng slug danh mục, đủ chi tiết, không dấu, khớp tên thư mục và `name`.
 - [ ] Có `metadata.category` (có trong `categories.json`) và `metadata.summary` ≤ 160 ký tự.
 - [ ] `description` nói rõ làm gì + khi nào dùng, có từ khoá người dùng, ≤ 1024 ký tự.
 - [ ] SKILL.md có: mục đích, bảng tài liệu, phạm vi/nguồn, quy trình, tra nhanh, checklist, đầu ra.

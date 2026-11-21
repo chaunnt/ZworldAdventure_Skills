@@ -12,13 +12,13 @@ Repo này là thư viện **skill** theo chuẩn Agent Skills. Đọc từ nông
 <!-- SKILLS:START -->
 | Skill | Danh mục | Tóm tắt |
 |---|---|---|
-| [`viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025`](skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md) | Pháp lý & văn bản nhà nước | Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4. |
-| [`viet-skill`](skills/viet-skill/SKILL.md) | Hệ thống skill | Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói. |
+| [`cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025`](skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md) | Cách viết văn bản | Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4. |
+| [`cach-viet-van-ban-skill-ai-da-nen-tang`](skills/cach-viet-van-ban-skill-ai-da-nen-tang/SKILL.md) | Cách viết văn bản | Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói. |
 <!-- SKILLS:END -->
 
 ## Khi chỉnh sửa repo
 
-- Tạo/sửa skill theo `skills/viet-skill/SKILL.md`. Danh mục khai báo trong `categories.json`.
+- Tạo/sửa skill theo `skills/cach-viet-van-ban-skill-ai-da-nen-tang/SKILL.md`. Danh mục khai báo trong `categories.json`.
 - Sau khi sửa, chạy `python3 scripts/build_skills.py` rồi commit mọi thay đổi.
 - Các tệp sau là **sinh tự động, không sửa tay**: `llms.txt`, `skills.json`, `index.html`, `huong-dan.html`,
   `danh-muc/**`, `skills/*/index.html`, `sitemap.xml`, `robots.txt`, `dist/**`, `.claude-plugin/marketplace.json`,

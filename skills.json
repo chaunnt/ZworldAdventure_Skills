@@ -5,46 +5,38 @@
   "usage": "Chọn skill theo summary; tải skill_md; chỉ mở references khi SKILL.md chỉ dẫn.",
   "categories": [
     {
-      "slug": "phap-ly-van-ban",
-      "title": "Pháp lý & văn bản nhà nước",
-      "summary": "Soạn thảo, trình bày và rà soát văn bản theo quy định pháp luật Việt Nam.",
-      "count": 1,
-      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/phap-ly-van-ban/",
-      "llms_txt": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/phap-ly-van-ban/llms.txt"
-    },
-    {
-      "slug": "he-thong-skill",
-      "title": "Hệ thống skill",
-      "summary": "Quy chuẩn và công cụ để viết, đóng gói, phân phối skill cho nhiều nền tảng AI.",
-      "count": 1,
-      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/he-thong-skill/",
-      "llms_txt": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/he-thong-skill/llms.txt"
+      "slug": "cach-viet-van-ban",
+      "title": "Cách viết văn bản",
+      "summary": "Soạn thảo, trình bày, rà soát văn bản: văn bản pháp luật, tài liệu nghiệp vụ, tệp skill cho AI.",
+      "count": 2,
+      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/cach-viet-van-ban/",
+      "llms_txt": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/cach-viet-van-ban/llms.txt"
     }
   ],
   "skills": [
     {
-      "name": "viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025",
+      "name": "cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025",
       "title": "Viết nội dung văn bản quy phạm pháp luật theo NĐ 78/2025/NĐ-CP",
-      "category": "phap-ly-van-ban",
+      "category": "cach-viet-van-ban",
       "summary": "Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4.",
       "keywords": "văn bản quy phạm pháp luật, thể thức văn bản, Nghị định 78/2025/NĐ-CP, trình bày văn bản, nghị định, thông tư, quyết định",
       "version": "1.1.0",
-      "skill_md": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md",
-      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/",
-      "claude_zip": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025.zip",
-      "prompt_md": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025.prompt.md"
+      "skill_md": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md",
+      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/",
+      "claude_zip": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025.zip",
+      "prompt_md": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025.prompt.md"
     },
     {
-      "name": "viet-skill",
+      "name": "cach-viet-van-ban-skill-ai-da-nen-tang",
       "title": "Viết skill chuẩn đa nền tảng",
-      "category": "he-thong-skill",
+      "category": "cach-viet-van-ban",
       "summary": "Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói.",
       "keywords": "agent skills, SKILL.md, viết skill, tạo skill, đóng gói skill, llms.txt",
       "version": "1.1.0",
-      "skill_md": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-skill/SKILL.md",
-      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-skill/",
-      "claude_zip": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-skill/viet-skill.zip",
-      "prompt_md": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-skill/viet-skill.prompt.md"
+      "skill_md": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-skill-ai-da-nen-tang/SKILL.md",
+      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-viet-van-ban-skill-ai-da-nen-tang/",
+      "claude_zip": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/cach-viet-van-ban-skill-ai-da-nen-tang/cach-viet-van-ban-skill-ai-da-nen-tang.zip",
+      "prompt_md": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/cach-viet-van-ban-skill-ai-da-nen-tang/cach-viet-van-ban-skill-ai-da-nen-tang.prompt.md"
     }
   ]
 }

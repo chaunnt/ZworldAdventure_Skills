@@ -14,8 +14,8 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025",
-        "./skills/viet-skill"
+        "./skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025",
+        "./skills/cach-viet-van-ban-skill-ai-da-nen-tang"
       ]
     }
   ]

@@ -200,6 +200,10 @@ class Site:
             body=body, jsonld=[ld], nav="cat"))
 
     def category_pages(self) -> None:
+        import shutil
+        for old in (self.root / "danh-muc").glob("*/"):
+            if old.is_dir() and old.name not in self.categories:
+                shutil.rmtree(old)  # danh mục đã bị xoá/đổi tên
         for slug, cat in self.categories.items():
             items = self.by_cat.get(slug, [])
             pages = max(1, math.ceil(len(items) / PAGE_SIZE))
@@ -319,9 +323,9 @@ Bản đóng gói nằm trong <code>dist/&lt;ten&gt;/</code>: <code>.zip</code> 
     <li>Đọc <a href="llms.txt"><code>llms.txt</code></a> hoặc <a href="skills.json"><code>skills.json</code></a> trước, rồi mới mở SKILL.md cần thiết.</li>
     <li>Clone repo: <code>AGENTS.md</code> ở gốc chỉ cho Cursor, Copilot, Windsurf… cách dùng skill.</li></ul></div>
 </div>
-<p>Chi tiết: <a href="skills/viet-skill/references/nen-tang.md"><code>skills/viet-skill/references/nen-tang.md</code></a>.</p></section>
+<p>Chi tiết: <a href="skills/cach-viet-van-ban-skill-ai-da-nen-tang/references/nen-tang.md"><code>skills/cach-viet-van-ban-skill-ai-da-nen-tang/references/nen-tang.md</code></a>.</p></section>
 <section aria-labelledby="h-write"><h2 id="h-write">Viết skill mới</h2><ol>
-  <li>Dùng skill <a href="skills/viet-skill/">viet-skill</a> hoặc chép <code>skills/viet-skill/assets/SKILL.template.md</code>.</li>
+  <li>Dùng skill <a href="skills/cach-viet-van-ban-skill-ai-da-nen-tang/">cach-viet-van-ban-skill-ai-da-nen-tang</a> hoặc chép <code>skills/cach-viet-van-ban-skill-ai-da-nen-tang/assets/SKILL.template.md</code>.</li>
   <li>Khai báo <code>metadata.category</code> (có trong <code>categories.json</code>) và <code>metadata.summary</code> ≤ 160 ký tự.</li>
   <li>Chạy <code>python3 scripts/build_skills.py</code> — tự sinh lại trang, <code>llms.txt</code>, sitemap, gói tải về.</li>
   <li>Commit toàn bộ thay đổi.</li></ol></section>"""
@@ -351,7 +355,7 @@ Bản đóng gói nằm trong <code>dist/&lt;ten&gt;/</code>: <code>.zip</code> 
                 L.append(f"- [Danh sách skill]({self.abs(self.cat_rel(slug) + 'llms.txt')})")
             L.append("")
         L += ["## Optional", "",
-              f"- [Hướng dẫn cài đặt theo nền tảng]({self.abs('skills/viet-skill/references/nen-tang.md')}): Claude, ChatGPT, Gemini, Codex",
+              f"- [Hướng dẫn cài đặt theo nền tảng]({self.abs('skills/cach-viet-van-ban-skill-ai-da-nen-tang/references/nen-tang.md')}): Claude, ChatGPT, Gemini, Codex",
               f"- [Mã nguồn]({cfg['repo_url']}): repo GitHub", ""]
         _write(self.root / "llms.txt", "\n".join(L))
 

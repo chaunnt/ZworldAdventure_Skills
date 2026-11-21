@@ -125,6 +125,11 @@ def validate(skill_dir: Path) -> tuple[dict, str, list[str]]:
     cats = load_categories()
     if md.get("category") not in cats:
         errors.append(f"{skill_dir.name}: metadata.category '{md.get('category')}' chưa có trong categories.json")
+    cat = md.get("category", "")
+    if cat and not name.startswith(cat + "-"):
+        errors.append(f"{skill_dir.name}: tên skill phải bắt đầu bằng slug danh mục '{cat}-' (Quy chuẩn đặt tên skill)")
+    if re.search(r"(^|-)(helper|tool|misc|chung|moi|test|v\d+)(-|$)", name):
+        errors.append(f"{skill_dir.name}: tên chứa từ mơ hồ bị cấm (helper, tool, misc, chung, moi, test, vN)")
     summ = md.get("summary", "")
     if not summ:
         errors.append(f"{skill_dir.name}: thiếu metadata.summary (1 câu ≤ {SUMMARY_MAX} ký tự)")
