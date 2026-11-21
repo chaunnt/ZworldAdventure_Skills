@@ -5,6 +5,9 @@ license: Xem LICENSE ở thư mục gốc repo
 metadata:
   version: "0.1.0"
   language: vi
+  category: [slug-danh-muc-trong-categories.json]
+  summary: "[1 câu ≤ 160 ký tự: skill làm gì]"
+  keywords: "[từ khoá 1, từ khoá 2]"
   source: "[Tài liệu gốc, số hiệu, ngày ban hành — nếu có]"
 ---
 
@@ -18,7 +21,6 @@ metadata:
 |---|---|
 | `SKILL.md` | Luôn đọc. |
 | `references/[ten].html` | [Khi cần chi tiết ...] |
-| `assets/[mau].html` | [Khi tạo đầu ra ...] |
 
 ## Phạm vi và nguồn
 

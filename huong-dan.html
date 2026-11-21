@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hướng dẫn sử dụng và viết skill | Z-World Skills</title>
+<meta name="description" content="Cách cài skill vào Claude, ChatGPT, Gemini, Codex và cách viết skill mới chuẩn đa nền tảng.">
+
+<meta name="robots" content="index, follow, max-snippet:-1">
+<link rel="canonical" href="https://chaunnt.github.io/ZworldAdventure_Skills/huong-dan.html">
+<link rel="alternate" type="text/plain" title="llms.txt — danh mục cho AI" href="llms.txt">
+<link rel="alternate" type="application/json" title="Danh mục skill (JSON)" href="skills.json">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Z-World Skills">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="Hướng dẫn sử dụng và viết skill | Z-World Skills">
+<meta property="og:description" content="Cách cài skill vào Claude, ChatGPT, Gemini, Codex và cách viết skill mới chuẩn đa nền tảng.">
+<meta property="og:url" content="https://chaunnt.github.io/ZworldAdventure_Skills/huong-dan.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="static/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://chaunnt.github.io/ZworldAdventure_Skills/"}, {"@type": "ListItem", "position": 2, "name": "Hướng dẫn", "item": "https://chaunnt.github.io/ZworldAdventure_Skills/huong-dan.html"}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="">Z-World Skills</a>
+  <nav aria-label="Điều hướng chính"><a href="">Trang chủ</a><a href="danh-muc/">Danh mục</a><a href="huong-dan.html" aria-current="page">Hướng dẫn</a><a href="llms.txt">llms.txt</a></nav>
+</div></header>
+<main class="wrap">
+<ol class="crumbs" aria-label="Breadcrumb"><li><a href="">Trang chủ</a></li><li aria-current="page">Hướng dẫn</li></ol>
+<h1>Hướng dẫn sử dụng và viết skill</h1>
+<p class="lead">Mỗi skill viết một lần theo chuẩn mở Agent Skills, dùng được trên nhiều nền tảng.
+Bản đóng gói nằm trong <code>dist/&lt;ten&gt;/</code>: <code>.zip</code> cho Claude, <code>.prompt.md</code> (một tệp gộp) cho ChatGPT, Gemini và model khác.</p>
+<section aria-labelledby="h-struct"><h2 id="h-struct">Cấu trúc một skill</h2>
+<pre>skills/&lt;ten-skill&gt;/
+├── SKILL.md        # frontmatter (name, description, metadata.category, metadata.summary) + hướng dẫn
+├── index.html      # trang giới thiệu (sinh tự động)
+├── references/     # tài liệu tra cứu chi tiết (.html, .md) — chỉ đọc khi SKILL.md chỉ dẫn
+└── scripts/        # mã hỗ trợ (tuỳ chọn)</pre></section>
+<section aria-labelledby="h-platform"><h2 id="h-platform">Cài đặt theo nền tảng</h2>
+<div class="grid">
+  <div class="card"><h3>Claude</h3><ul>
+    <li><strong>claude.ai / Desktop:</strong> Settings → Capabilities → Skills → Upload tệp <code>.zip</code>.</li>
+    <li><strong>Claude Code:</strong> <code>/plugin marketplace add chaunnt/ZworldAdventure_Skills</code> rồi <code>/plugin install zworld-skills@zworld-skills</code>.</li>
+    <li>Hoặc chép thư mục skill vào <code>~/.claude/skills/</code>.</li></ul></div>
+  <div class="card"><h3>ChatGPT</h3><ul>
+    <li><strong>Custom GPT / Project:</strong> upload <code>.prompt.md</code> vào Knowledge.</li>
+    <li>Instructions: “Làm việc theo skill trong tệp &lt;tên&gt;.prompt.md ở Knowledge.”</li>
+    <li><strong>Codex:</strong> chép thư mục skill vào thư mục skills của Codex.</li></ul></div>
+  <div class="card"><h3>Gemini</h3><ul>
+    <li><strong>Gem:</strong> upload <code>.prompt.md</code> vào Knowledge hoặc dán vào Instructions.</li>
+    <li><strong>AI Studio:</strong> dán <code>.prompt.md</code> vào System instructions.</li>
+    <li><strong>Gemini CLI:</strong> chép thư mục skill vào thư mục skills của Gemini CLI.</li></ul></div>
+  <div class="card"><h3>Agent khác</h3><ul>
+    <li>Đọc <a href="llms.txt"><code>llms.txt</code></a> hoặc <a href="skills.json"><code>skills.json</code></a> trước, rồi mới mở SKILL.md cần thiết.</li>
+    <li>Clone repo: <code>AGENTS.md</code> ở gốc chỉ cho Cursor, Copilot, Windsurf… cách dùng skill.</li></ul></div>
+</div>
+<p>Chi tiết: <a href="skills/viet-skill/references/nen-tang.md"><code>skills/viet-skill/references/nen-tang.md</code></a>.</p></section>
+<section aria-labelledby="h-write"><h2 id="h-write">Viết skill mới</h2><ol>
+  <li>Dùng skill <a href="skills/viet-skill/">viet-skill</a> hoặc chép <code>skills/viet-skill/assets/SKILL.template.md</code>.</li>
+  <li>Khai báo <code>metadata.category</code> (có trong <code>categories.json</code>) và <code>metadata.summary</code> ≤ 160 ký tự.</li>
+  <li>Chạy <code>python3 scripts/build_skills.py</code> — tự sinh lại trang, <code>llms.txt</code>, sitemap, gói tải về.</li>
+  <li>Commit toàn bộ thay đổi.</li></ol></section>
+</main>
+<footer><div class="wrap">Z-World Skills · <a href="https://github.com/chaunnt/ZworldAdventure_Skills">Mã nguồn GitHub</a> ·
+<a href="llms.txt">llms.txt</a> · <a href="skills.json">skills.json</a> · <a href="sitemap.xml">sitemap.xml</a></div></footer>
+</body>
+</html>

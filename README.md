@@ -1,40 +1,50 @@
 # ZworldAdventure_Skills
 
-Bộ **skill cho AI agent** của Z-World Adventure, viết theo chuẩn mở [Agent Skills](https://agentskills.io) —
+Thư viện **skill cho AI agent** của Z-World Adventure, viết theo chuẩn mở [Agent Skills](https://agentskills.io) —
 dùng được với Claude, ChatGPT, Gemini, Codex, Cursor, Copilot...
 
-👉 Trang giới thiệu: mở [`index.html`](index.html) (hoặc bật GitHub Pages cho repo).
+- Website: https://chaunnt.github.io/ZworldAdventure_Skills/ (bật GitHub Pages: Settings → Pages → Deploy from branch `main`, thư mục `/`)
+- Cho AI: [`llms.txt`](llms.txt) · [`skills.json`](skills.json) · [`AGENTS.md`](AGENTS.md)
 
 ## Skill hiện có
 
-| Skill | Mô tả |
-|---|---|
-| [`the-thuc-van-ban`](skills/the-thuc-van-ban/SKILL.md) | Soạn, định dạng, rà soát văn bản QPPL và công văn theo Nghị định 78/2025/NĐ-CP (kèm sơ đồ bố trí mô tả bằng lời, mẫu HTML5 khổ A4) |
-| [`viet-skill`](skills/viet-skill/SKILL.md) | Tạo skill mới chuẩn đa nền tảng, chuyển tài liệu/PDF thành skill, đóng gói cho từng model |
+<!-- SKILLS:START -->
+| Skill | Danh mục | Tóm tắt |
+|---|---|---|
+| [`viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025`](skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md) | Pháp lý & văn bản nhà nước | Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4. |
+| [`viet-skill`](skills/viet-skill/SKILL.md) | Hệ thống skill | Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói. |
+<!-- SKILLS:END -->
 
 ## Cấu trúc
 
 ```
-skills/<ten-skill>/      # nguồn: SKILL.md + references/ + assets/ (+ scripts/)
-dist/<ten-skill>/        # bản build: <ten>.zip (Claude), <ten>.prompt.md (ChatGPT, Gemini, model khác)
-scripts/build_skills.py  # kiểm tra + build + cập nhật index.html, skills.json, marketplace
-AGENTS.md                # hướng dẫn cho agent (CLAUDE.md, GEMINI.md trỏ về đây)
-.claude-plugin/          # marketplace để cài bằng Claude Code
+skills/<ten-skill>/        # nguồn: SKILL.md + references/ (+ scripts/); index.html là trang sinh tự động
+categories.json            # khai báo danh mục
+scripts/build_skills.py    # kiểm tra + đóng gói + sinh điều hướng (gọi scripts/sitegen.py)
+dist/<ten-skill>/          # bản build: <ten>.zip (Claude), <ten>.prompt.md (ChatGPT, Gemini, model khác)
+llms.txt, skills.json      # danh mục rút gọn cho LLM / máy đọc
+index.html, huong-dan.html, danh-muc/   # website (SEO: sitemap.xml, robots.txt, JSON-LD, canonical)
+AGENTS.md                  # hướng dẫn cho agent (CLAUDE.md, GEMINI.md trỏ về đây)
+.claude-plugin/            # marketplace để cài bằng Claude Code
 ```
+
+## Lớp điều hướng cho AI (tiết kiệm token)
+
+`llms.txt` (1 dòng/skill) → `danh-muc/<slug>/llms.txt` (khi nhiều skill) → `skills/<ten>/SKILL.md` → `references/...`
 
 ## Import nhanh
 
 - **Claude.ai**: Settings → Capabilities → Skills → Upload `dist/<ten>/<ten>.zip`.
 - **Claude Code**: `/plugin marketplace add chaunnt/ZworldAdventure_Skills` → `/plugin install zworld-skills@zworld-skills`.
-- **ChatGPT (Custom GPT/Project)** và **Gemini (Gem)**: upload `dist/<ten>/<ten>.prompt.md` vào Knowledge, Instructions ghi
-  “Làm việc theo skill trong tệp <ten>.prompt.md”.
-- **Codex / Gemini CLI / agent khác**: chép `skills/<ten>/` vào thư mục skills của công cụ, hoặc clone repo (đã có `AGENTS.md`).
+- **ChatGPT (Custom GPT/Project)**, **Gemini (Gem)**: upload `dist/<ten>/<ten>.prompt.md` vào Knowledge.
+- **Codex / Gemini CLI / agent khác**: chép `skills/<ten>/` vào thư mục skills của công cụ, hoặc clone repo.
 
-Chi tiết: [`skills/viet-skill/references/nen-tang.md`](skills/viet-skill/references/nen-tang.md).
+Chi tiết: [`huong-dan.html`](huong-dan.html), [`skills/viet-skill/references/nen-tang.md`](skills/viet-skill/references/nen-tang.md).
 
 ## Thêm skill mới
 
 ```bash
 mkdir -p skills/<ten-skill> && cp skills/viet-skill/assets/SKILL.template.md skills/<ten-skill>/SKILL.md
+# điền nội dung, khai báo metadata.category (categories.json) và metadata.summary
 python3 scripts/build_skills.py
 ```

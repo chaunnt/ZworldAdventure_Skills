@@ -1,42 +1,50 @@
 {
+  "name": "Z-World Skills",
+  "base_url": "https://chaunnt.github.io/ZworldAdventure_Skills/",
+  "llms_txt": "https://chaunnt.github.io/ZworldAdventure_Skills/llms.txt",
+  "usage": "Chọn skill theo summary; tải skill_md; chỉ mở references khi SKILL.md chỉ dẫn.",
+  "categories": [
+    {
+      "slug": "phap-ly-van-ban",
+      "title": "Pháp lý & văn bản nhà nước",
+      "summary": "Soạn thảo, trình bày và rà soát văn bản theo quy định pháp luật Việt Nam.",
+      "count": 1,
+      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/phap-ly-van-ban/",
+      "llms_txt": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/phap-ly-van-ban/llms.txt"
+    },
+    {
+      "slug": "he-thong-skill",
+      "title": "Hệ thống skill",
+      "summary": "Quy chuẩn và công cụ để viết, đóng gói, phân phối skill cho nhiều nền tảng AI.",
+      "count": 1,
+      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/he-thong-skill/",
+      "llms_txt": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/he-thong-skill/llms.txt"
+    }
+  ],
   "skills": [
     {
-      "name": "the-thuc-van-ban",
-      "title": "Thể thức, kỹ thuật trình bày văn bản (NĐ 78/2025/NĐ-CP)",
-      "description": "Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật và văn bản hành chính Việt Nam (luật, nghị định, nghị quyết, thông tư, quyết định, lệnh, công văn...) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết công văn, soạn văn bản nhà nước, trình bày Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ, điều khoản, chữ ký, nơi nhận, phụ lục, hoặc kiểm tra một văn bản có đúng thể thức không.",
-      "version": "1.0.0",
-      "language": "vi",
-      "source": "Nghị định số 78/2025/NĐ-CP ngày 01/4/2025 của Chính phủ - Phụ lục thể thức, kỹ thuật trình bày văn bản QPPL (bản đăng trên Báo điện tử Chính phủ, 09/04/2025)",
-      "path": "skills/the-thuc-van-ban",
-      "files": [
-        "SKILL.md",
-        "assets/mau-cong-van.html",
-        "assets/mau-van-ban-qppl.html",
-        "references/quy-dinh-chi-tiet.html",
-        "references/so-do-bo-tri.html"
-      ],
-      "dist": {
-        "claude_zip": "dist/the-thuc-van-ban/the-thuc-van-ban.zip",
-        "prompt": "dist/the-thuc-van-ban/the-thuc-van-ban.prompt.md"
-      }
+      "name": "viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025",
+      "title": "Viết nội dung văn bản quy phạm pháp luật theo NĐ 78/2025/NĐ-CP",
+      "category": "phap-ly-van-ban",
+      "summary": "Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4.",
+      "keywords": "văn bản quy phạm pháp luật, thể thức văn bản, Nghị định 78/2025/NĐ-CP, trình bày văn bản, nghị định, thông tư, quyết định",
+      "version": "1.1.0",
+      "skill_md": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/SKILL.md",
+      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/",
+      "claude_zip": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025.zip",
+      "prompt_md": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025.prompt.md"
     },
     {
       "name": "viet-skill",
       "title": "Viết skill chuẩn đa nền tảng",
-      "description": "Tạo mới hoặc chỉnh sửa một skill trong repo ZworldAdventure_Skills theo chuẩn Agent Skills (SKILL.md + references + assets) để dùng được trên Claude (claude.ai, Claude Code, API), ChatGPT (Custom GPT, Codex), Gemini (Gem, Gemini CLI) và các agent khác. Dùng khi người dùng muốn \"viết skill\", \"tạo skill mới\", \"chuyển tài liệu/PDF/quy trình thành skill\", \"đóng gói skill cho ChatGPT/Gemini\", hoặc rà soát một skill có đúng chuẩn không.",
-      "version": "1.0.0",
-      "language": "vi",
-      "source": "",
-      "path": "skills/viet-skill",
-      "files": [
-        "SKILL.md",
-        "assets/SKILL.template.md",
-        "references/nen-tang.md"
-      ],
-      "dist": {
-        "claude_zip": "dist/viet-skill/viet-skill.zip",
-        "prompt": "dist/viet-skill/viet-skill.prompt.md"
-      }
+      "category": "he-thong-skill",
+      "summary": "Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói.",
+      "keywords": "agent skills, SKILL.md, viết skill, tạo skill, đóng gói skill, llms.txt",
+      "version": "1.1.0",
+      "skill_md": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-skill/SKILL.md",
+      "page": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-skill/",
+      "claude_zip": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-skill/viet-skill.zip",
+      "prompt_md": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/viet-skill/viet-skill.prompt.md"
     }
   ]
 }

@@ -1,0 +1,9 @@
+# Hệ thống skill
+
+> Quy chuẩn và công cụ để viết, đóng gói, phân phối skill cho nhiều nền tảng AI.
+
+Mỗi dòng là một skill. Mở SKILL.md của skill phù hợp; chỉ mở references/ khi SKILL.md chỉ dẫn.
+
+## Skills
+
+- [viet-skill](https://chaunnt.github.io/ZworldAdventure_Skills/skills/viet-skill/SKILL.md): Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói.

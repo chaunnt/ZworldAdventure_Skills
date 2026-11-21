@@ -1,0 +1,6 @@
+# Cho phép mọi công cụ tìm kiếm và AI crawler đọc thư viện skill.
+# Danh mục rút gọn cho LLM: https://chaunnt.github.io/ZworldAdventure_Skills/llms.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://chaunnt.github.io/ZworldAdventure_Skills/sitemap.xml

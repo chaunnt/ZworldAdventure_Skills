@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
-"""Kiểm tra và đóng gói các skill trong skills/ cho nhiều nền tảng.
+"""Kiểm tra, đóng gói các skill trong skills/ và sinh lớp điều hướng (llms.txt, trang web, sitemap).
 
-Chỉ dùng thư viện chuẩn Python 3.8+.
+Chỉ dùng thư viện chuẩn Python 3.9+.
 
-    python3 scripts/build_skills.py          # kiểm tra + build vào dist/, cập nhật skills.json, index.html, marketplace
+    python3 scripts/build_skills.py          # kiểm tra + build dist/ + sinh llms.txt, skills.json, trang HTML, sitemap...
     python3 scripts/build_skills.py --check  # chỉ kiểm tra hợp lệ (trả mã lỗi 1 nếu có lỗi)
+
+Đổi địa chỉ website (vd khi dùng tên miền riêng): đặt biến môi trường SITE_BASE_URL.
 """
 from __future__ import annotations
 
 import argparse
 import html
 import json
+import os
 import re
 import sys
 import zipfile
@@ -22,6 +25,17 @@ SKILLS_DIR = ROOT / "skills"
 DIST_DIR = ROOT / "dist"
 REPO_SLUG = "chaunnt/ZworldAdventure_Skills"
 MARKETPLACE_NAME = "zworld-skills"
+SITE = {
+    "site_name": "Z-World Skills",
+    "site_description": "Thư viện skill (Agent Skills) cho AI agent của Z-World Adventure: hướng dẫn nghiệp vụ "
+                        "đóng gói sẵn, dùng được với Claude, ChatGPT, Gemini, Codex và các agent khác.",
+    "keywords": "agent skills, AI agent, Claude skills, ChatGPT, Gemini, llms.txt, Z-World Adventure",
+    "base_url": os.environ.get("SITE_BASE_URL", "https://chaunnt.github.io/ZworldAdventure_Skills/"),
+    "repo_url": f"https://github.com/{REPO_SLUG}",
+    "repo_slug": REPO_SLUG,
+}
+SUMMARY_MAX = 160
+GENERATED_IN_SKILL = {"index.html"}  # tệp sinh tự động trong thư mục skill, không đưa vào gói
 
 ALLOWED_KEYS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -81,6 +95,11 @@ def _unquote(v: str) -> str:
     return v
 
 
+def load_categories() -> dict:
+    path = ROOT / "categories.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
 def validate(skill_dir: Path) -> tuple[dict, str, list[str]]:
     errors: list[str] = []
     skill_md = skill_dir / "SKILL.md"
@@ -102,6 +121,15 @@ def validate(skill_dir: Path) -> tuple[dict, str, list[str]]:
         errors.append(f"{skill_dir.name}: 'description' dài {len(desc)} > 1024 ký tự")
     if "<" in desc or ">" in desc:
         errors.append(f"{skill_dir.name}: 'description' không được chứa < hoặc >")
+    md = meta.get("metadata") if isinstance(meta.get("metadata"), dict) else {}
+    cats = load_categories()
+    if md.get("category") not in cats:
+        errors.append(f"{skill_dir.name}: metadata.category '{md.get('category')}' chưa có trong categories.json")
+    summ = md.get("summary", "")
+    if not summ:
+        errors.append(f"{skill_dir.name}: thiếu metadata.summary (1 câu ≤ {SUMMARY_MAX} ký tự)")
+    elif len(summ) > SUMMARY_MAX:
+        errors.append(f"{skill_dir.name}: metadata.summary dài {len(summ)} > {SUMMARY_MAX} ký tự")
     extra = set(meta) - ALLOWED_KEYS
     if extra:
         errors.append(f"{skill_dir.name}: khoá frontmatter không hỗ trợ: {', '.join(sorted(extra))}")
@@ -246,7 +274,11 @@ def html_to_text(src: str) -> str:
 
 # ---------------------------------------------------------------- build
 def skill_files(skill_dir: Path) -> list[Path]:
-    return sorted(p for p in skill_dir.rglob("*") if p.is_file() and not p.name.startswith("."))
+    return sorted(
+        p for p in skill_dir.rglob("*")
+        if p.is_file() and not p.name.startswith(".") and "__pycache__" not in p.parts
+        and p.relative_to(skill_dir).as_posix() not in GENERATED_IN_SKILL
+    )
 
 
 def build_zip(skill_dir: Path, out: Path) -> None:
@@ -292,39 +324,6 @@ def build_prompt(skill_dir: Path, meta: dict, body: str) -> str:
     return "\n".join(parts) + "\n"
 
 
-def update_index(skills: list[dict]) -> None:
-    index = ROOT / "index.html"
-    if not index.exists():
-        return
-    cards = []
-    for s in skills:
-        n = html.escape(s["name"])
-        files = "".join(
-            f'<li><a href="skills/{n}/{html.escape(f)}">{html.escape(f)}</a></li>' for f in s["files"]
-        )
-        cards.append(
-            f"""      <article class="card" id="skill-{n}">
-        <header><h3>{html.escape(s.get('title') or n)}</h3><code>{n}</code> <span class="ver">v{html.escape(s['version'])}</span></header>
-        <p>{html.escape(s['description'])}</p>
-        <details><summary>Tệp trong skill ({len(s['files'])})</summary><ul>{files}</ul></details>
-        <p class="dl">
-          <a class="btn" href="dist/{n}/{n}.zip" download>Tải .zip (Claude)</a>
-          <a class="btn" href="dist/{n}/{n}.prompt.md" download>Tải .prompt.md (ChatGPT, Gemini…)</a>
-          <a class="btn ghost" href="skills/{n}/SKILL.md">Xem SKILL.md</a>
-        </p>
-      </article>"""
-        )
-    text = index.read_text(encoding="utf-8")
-    new = re.sub(
-        r"(<!-- SKILLS:START -->)(.*?)(<!-- SKILLS:END -->)",
-        lambda m: m.group(1) + "\n" + "\n".join(cards) + "\n      " + m.group(3),
-        text,
-        flags=re.S,
-    )
-    new = re.sub(r'(<span id="skill-count">)\d*(</span>)', rf"\g<1>{len(skills)}\g<2>", new)
-    index.write_text(new, encoding="utf-8")
-
-
 def update_marketplace(skills: list[dict]) -> None:
     path = ROOT / ".claude-plugin" / "marketplace.json"
     path.parent.mkdir(exist_ok=True)
@@ -350,12 +349,34 @@ def first_heading(body: str) -> str:
     return m.group(1).strip() if m else ""
 
 
+def doc_table(body: str) -> list[tuple[str, str]]:
+    """Lấy bảng 'Tài liệu trong skill' (| `tệp` | khi nào đọc |) để làm 'thứ tự đọc cho AI'."""
+    rows = []
+    for m in re.finditer(r"^\|\s*`([^`]+)`[^|]*\|\s*(.+?)\s*\|\s*$", body, re.M):
+        when = re.sub(r"\*\*|`", "", m.group(2))
+        rows.append((m.group(1), when))
+    return rows
+
+
+def outline(body: str) -> list[str]:
+    return [h.strip() for h in re.findall(r"^##\s+(.+)$", body, re.M)]
+
+
+def replace_block(path: Path, marker: str, content: str) -> None:
+    if not path.exists():
+        return
+    text = path.read_text(encoding="utf-8")
+    new = re.sub(rf"(<!-- {marker}:START -->)(.*?)(<!-- {marker}:END -->)",
+                 lambda m: m.group(1) + "\n" + content + "\n" + m.group(3), text, flags=re.S)
+    path.write_text(new, encoding="utf-8")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", action="store_true", help="chỉ kiểm tra, không build")
     args = ap.parse_args()
 
-    dirs = sorted(d for d in SKILLS_DIR.iterdir() if d.is_dir()) if SKILLS_DIR.exists() else []
+    dirs = sorted(d for d in SKILLS_DIR.iterdir() if d.is_dir() and not d.name.startswith(("_", "."))) if SKILLS_DIR.exists() else []
     all_errors: list[str] = []
     results = []
     for d in dirs:
@@ -371,30 +392,42 @@ def main() -> int:
         print(f"\n{len(results)} skill hợp lệ.")
         return 0
 
-    summary = []
+    categories = load_categories()
+    skills = []
     for d, meta, body in results:
         out = DIST_DIR / d.name
         out.mkdir(parents=True, exist_ok=True)
         build_zip(d, out / f"{d.name}.zip")
         (out / f"{d.name}.prompt.md").write_text(build_prompt(d, meta, body), encoding="utf-8")
         md = meta.get("metadata") if isinstance(meta.get("metadata"), dict) else {}
-        summary.append(
-            {
-                "name": meta["name"],
-                "title": first_heading(body),
-                "description": meta["description"],
-                "version": md.get("version", "0.0.0"),
-                "language": md.get("language", ""),
-                "source": md.get("source", ""),
-                "path": f"skills/{d.name}",
-                "files": [f.relative_to(d).as_posix() for f in skill_files(d)],
-                "dist": {"claude_zip": f"dist/{d.name}/{d.name}.zip", "prompt": f"dist/{d.name}/{d.name}.prompt.md"},
-            }
-        )
-    (ROOT / "skills.json").write_text(json.dumps({"skills": summary}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    update_index(summary)
-    update_marketplace(summary)
-    print(f"\nĐã build {len(summary)} skill vào dist/, cập nhật skills.json, index.html, .claude-plugin/marketplace.json")
+        skills.append({
+            "name": meta["name"], "title": first_heading(body) or meta["name"], "description": meta["description"],
+            "category": md["category"], "summary": md["summary"], "keywords": md.get("keywords", ""),
+            "version": md.get("version", "0.0.0"), "source": md.get("source", ""),
+            "files": [f.relative_to(d).as_posix() for f in skill_files(d)],
+            "docs": doc_table(body), "outline": outline(body),
+        })
+    # xoá bản build của skill đã bị xoá/đổi tên
+    names = {s["name"] for s in skills}
+    if DIST_DIR.exists():
+        for old in DIST_DIR.iterdir():
+            if old.is_dir() and old.name not in names:
+                for f in old.iterdir():
+                    f.unlink()
+                old.rmdir()
+    order = {k: i for i, k in enumerate(categories)}
+    skills.sort(key=lambda s: (order.get(s["category"], 999), s["title"]))
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import sitegen  # scripts/sitegen.py
+    sitegen.Site(ROOT, SITE, categories, skills).build()
+    update_marketplace(skills)
+    table = "\n".join(["| Skill | Danh mục | Tóm tắt |", "|---|---|---|"] + [
+        f"| [`{s['name']}`](skills/{s['name']}/SKILL.md) | {categories[s['category']]['title']} | {s['summary']} |" for s in skills])
+    replace_block(ROOT / "README.md", "SKILLS", table)
+    replace_block(ROOT / "AGENTS.md", "SKILLS", table)
+    print(f"\nĐã build {len(skills)} skill. Sinh lại: dist/, llms.txt, skills.json, index.html, huong-dan.html, "
+          "danh-muc/, skills/*/index.html, sitemap.xml, robots.txt, marketplace.json, README.md, AGENTS.md")
     return 0
 
 

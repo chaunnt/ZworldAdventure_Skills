@@ -1,14 +1,17 @@
 ---
-name: the-thuc-van-ban
-description: Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật và văn bản hành chính Việt Nam (luật, nghị định, nghị quyết, thông tư, quyết định, lệnh, công văn...) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết công văn, soạn văn bản nhà nước, trình bày Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ, điều khoản, chữ ký, nơi nhận, phụ lục, hoặc kiểm tra một văn bản có đúng thể thức không.
+name: viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025
+description: Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật Việt Nam (luật, pháp lệnh, nghị quyết, nghị định, quyết định, thông tư, thông tư liên tịch, lệnh) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết hoặc trình bày văn bản QPPL, Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ ban hành, chương/điều/khoản/điểm, chữ ký TM./KT., nơi nhận, phụ lục, sơ đồ bố trí trang A4, hoặc kiểm tra văn bản có đúng thể thức NĐ 78/2025 không.
 license: Xem LICENSE ở thư mục gốc repo
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   language: vi
+  category: phap-ly-van-ban
+  summary: "Thể thức, kỹ thuật trình bày văn bản QPPL theo NĐ 78/2025/NĐ-CP: cỡ chữ, vị trí, số ký hiệu, ký, nơi nhận, sơ đồ A4."
+  keywords: "văn bản quy phạm pháp luật, thể thức văn bản, Nghị định 78/2025/NĐ-CP, trình bày văn bản, nghị định, thông tư, quyết định"
   source: "Nghị định số 78/2025/NĐ-CP ngày 01/4/2025 của Chính phủ - Phụ lục thể thức, kỹ thuật trình bày văn bản QPPL (bản đăng trên Báo điện tử Chính phủ, 09/04/2025)"
 ---
 
-# Thể thức, kỹ thuật trình bày văn bản (NĐ 78/2025/NĐ-CP)
+# Viết nội dung văn bản quy phạm pháp luật theo NĐ 78/2025/NĐ-CP
 
 Skill này giúp bạn (agent) **soạn mới** hoặc **rà soát** một văn bản sao cho đúng thể thức
 và kỹ thuật trình bày theo Nghị định 78/2025/NĐ-CP.
@@ -20,21 +23,16 @@ và kỹ thuật trình bày theo Nghị định 78/2025/NĐ-CP.
 | `SKILL.md` (tệp này) | Luôn đọc. Có quy trình, bảng tra nhanh, checklist. |
 | `references/quy-dinh-chi-tiet.html` | Khi cần câu chữ đầy đủ của quy định (số ký hiệu từng loại văn bản, ký thay/thay mặt, địa danh, phụ lục, sửa đổi bổ sung). |
 | `references/so-do-bo-tri.html` | Khi cần biết **vị trí** từng thành phần trên trang A4. Sơ đồ đã được mô tả hoàn toàn bằng lời + toạ độ phần trăm + JSON, không cần nhìn hình. |
-| `assets/mau-van-ban-qppl.html` | Mẫu HTML5 khổ A4 cho văn bản QPPL (nghị định/quyết định/thông tư). Sao chép rồi điền nội dung. |
-| `assets/mau-cong-van.html` | Mẫu HTML5 khổ A4 cho công văn hành chính. |
 
-Các tệp `.html` là HTML5 thuần, đọc được như văn bản; nếu môi trường không mở được tệp phụ, mọi quy tắc
-quan trọng nhất đã có trong bảng tra nhanh bên dưới.
+Thứ tự đọc để tiết kiệm token: tệp này → (nếu cần) đúng mục trong `references/`. Các tệp `.html` là HTML5 thuần,
+đọc được như văn bản; nếu không mở được tệp phụ, quy tắc quan trọng nhất đã có trong bảng tra nhanh bên dưới.
 
 ## Phạm vi và lưu ý về nguồn
 
 - Nguồn gốc của skill: Phụ lục về thể thức, kỹ thuật trình bày **văn bản quy phạm pháp luật (QPPL)**
   ban hành kèm NĐ 78/2025/NĐ-CP.
-- **Công văn hành chính** (không phải văn bản QPPL) về pháp lý chịu sự điều chỉnh của
-  **Nghị định 30/2020/NĐ-CP về công tác văn thư**. Bố cục trang (sơ đồ ô số 1–11), phông chữ, lề và
-  phần lớn quy tắc về cơ bản giống nhau, nên skill vẫn áp dụng được; những điểm riêng của công văn
-  (trích yếu "V/v", "Kính gửi") được ghi rõ là **ngoài tài liệu nguồn** — hãy nhắc người dùng đối chiếu
-  NĐ 30/2020 nếu văn bản cần độ chính xác pháp lý.
+- Phạm vi: chỉ **văn bản QPPL**. Công văn và văn bản hành chính khác thuộc Nghị định 30/2020/NĐ-CP về công tác
+  văn thư — không nằm trong skill này; nếu người dùng cần, hãy nói rõ và chỉ dùng phần bố cục chung một cách thận trọng.
 - Khi quy định cho phép một khoảng (ví dụ cỡ chữ 13–14), hãy chọn **một giá trị và dùng thống nhất**
   trong toàn văn bản (mặc định đề xuất: nội dung 14, các thành phần khác theo bảng).
 - Không bịa số hiệu, ngày ban hành, tên người ký, căn cứ pháp lý. Thiếu thông tin thì để chỗ trống
@@ -43,7 +41,7 @@ quan trọng nhất đã có trong bảng tra nhanh bên dưới.
 ## Quy trình làm việc
 
 1. **Xác định loại văn bản** (luật, pháp lệnh, nghị quyết QH/UBTVQH/HĐND, nghị định, quyết định,
-   thông tư, thông tư liên tịch, nghị quyết liên tịch, lệnh/quyết định Chủ tịch nước, công văn...).
+   thông tư, thông tư liên tịch, nghị quyết liên tịch, lệnh/quyết định Chủ tịch nước).
    Loại văn bản quyết định: cấu trúc số ký hiệu, có/không có địa danh–ngày ở đầu, từ khoá
    "QUYẾT NGHỊ/QUYẾT ĐỊNH/LỆNH", cách ký (TM./KT.), vị trí chữ ký.
 2. **Thu thập dữ liệu**: tên cơ quan ban hành, số thứ tự, năm, chữ viết tắt, địa danh, ngày ký,
@@ -51,8 +49,7 @@ quan trọng nhất đã có trong bảng tra nhanh bên dưới.
 3. **Dựng khung trang** theo `references/so-do-bo-tri.html` (A4 dọc, lề trái 30–35 mm, lề trên/dưới/phải 15–20 mm).
 4. **Điền thành phần thể thức** theo bảng tra nhanh (cỡ chữ, kiểu chữ, căn lề, đường kẻ).
 5. **Trình bày nội dung**: Phần/Chương/Mục/Điều/Khoản/Điểm đúng ký số (La Mã / Ả Rập / chữ cái tiếng Việt).
-6. **Tự kiểm tra** bằng checklist cuối tệp, rồi trả kết quả (HTML theo mẫu, DOCX, hoặc văn bản thuần
-   kèm chú thích định dạng — tuỳ người dùng yêu cầu).
+6. **Tự kiểm tra** bằng checklist, rồi trả kết quả theo mục "Định dạng đầu ra".
 
 Khi **rà soát** văn bản có sẵn: đi lần lượt từng ô 1→11 của sơ đồ và từng dòng của checklist, báo lỗi theo
 dạng `Ô số – thành phần – sai ở đâu – sửa thành gì`.
@@ -155,20 +152,9 @@ Quy ước: **IN HOA** = toàn bộ chữ in hoa; *in thường* = chữ thườ
 - [ ] Số trang canh giữa lề trên, ẩn trang 1; phụ lục đánh số trang riêng.
 - [ ] Phụ lục: được dẫn chiếu trong văn bản; ≥ 2 phụ lục đánh số La Mã; có thông tin chỉ dẫn nghiêng.
 
-## Công văn hành chính (bổ sung, ngoài tài liệu nguồn)
-
-Áp dụng toàn bộ bố cục và định dạng ở trên, cộng thêm các điểm sau (theo thông lệ NĐ 30/2020/NĐ-CP —
-cần đối chiếu khi yêu cầu độ chính xác pháp lý):
-
-- Công văn **không có tên loại văn bản** (ô 5 trống); thay vào đó là **trích yếu** bắt đầu bằng `V/v` đặt canh giữa
-  ngay dưới số ký hiệu (ô 3), chữ in thường, cỡ 12–13, đứng.
-- Dưới phần đầu là dòng `Kính gửi:` (một nơi nhận thì cùng dòng; nhiều nơi thì liệt kê mỗi nơi một dòng có `-`).
-- Ký hiệu công văn thường là `Số: [số]/[viết tắt cơ quan]-[viết tắt đơn vị soạn thảo]` (không có năm, không có tên loại).
-
 ## Định dạng đầu ra
 
-- **HTML/PDF**: sao chép `assets/mau-van-ban-qppl.html` hoặc `assets/mau-cong-van.html`, thay các chỗ `[...]`.
-  Mẫu đã có `@page` A4, lề, phông, đường kẻ, bảng hai cột phần đầu và khối chữ ký/nơi nhận; in ra PDF từ trình duyệt.
-- **DOCX**: dùng cùng thông số (lề tính theo mm, cỡ chữ pt, bảng không viền 2 cột cho phần đầu và phần ký).
-- **Văn bản thuần** (chat): trình bày theo đúng thứ tự thành phần và ghi chú định dạng trong ngoặc vuông,
+- **DOCX / PDF / HTML**: A4 dọc; lề theo mm; cỡ chữ theo pt; phần đầu (ô 1–4) và phần ký (ô 7–9) dùng bảng 2 cột
+  không viền như mô tả ở mục 7 của `references/so-do-bo-tri.html`; số trang ở lề trên, ẩn trang 1.
+- **Văn bản thuần** (chat): trình bày đúng thứ tự thành phần, ghi chú định dạng trong ngoặc vuông,
   ví dụ `[IN HOA, đậm, 13, canh giữa]`.

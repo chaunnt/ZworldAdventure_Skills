@@ -3,8 +3,11 @@ name: viet-skill
 description: Tạo mới hoặc chỉnh sửa một skill trong repo ZworldAdventure_Skills theo chuẩn Agent Skills (SKILL.md + references + assets) để dùng được trên Claude (claude.ai, Claude Code, API), ChatGPT (Custom GPT, Codex), Gemini (Gem, Gemini CLI) và các agent khác. Dùng khi người dùng muốn "viết skill", "tạo skill mới", "chuyển tài liệu/PDF/quy trình thành skill", "đóng gói skill cho ChatGPT/Gemini", hoặc rà soát một skill có đúng chuẩn không.
 license: Xem LICENSE ở thư mục gốc repo
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   language: vi
+  category: he-thong-skill
+  summary: "Quy chuẩn tạo skill đa nền tảng (Claude, ChatGPT, Gemini), chuyển tài liệu/PDF thành skill và đóng gói."
+  keywords: "agent skills, SKILL.md, viết skill, tạo skill, đóng gói skill, llms.txt"
 ---
 
 # Viết skill chuẩn đa nền tảng
@@ -27,9 +30,10 @@ skills/<ten-skill>/
 └── scripts/            # tuỳ chọn: mã chạy được (python/bash), chỉ dùng thư viện chuẩn nếu có thể
 ```
 
-- `<ten-skill>`: chữ thường, số, gạch nối; **không dấu**, tối đa 64 ký tự; trùng với `name` trong frontmatter.
-  Ví dụ: `the-thuc-van-ban`, `bao-gia-bao-hiem`.
-- Đường dẫn trong SKILL.md luôn **tương đối** so với thư mục skill (vd `references/quy-dinh.html`), dùng `/`.
+- `<ten-skill>`: **chỉ chữ thường** a–z, số, gạch nối; **không dấu**, tối đa 64 ký tự; trùng với `name` trong frontmatter.
+  Chữ hoa bị Claude và nhiều nền tảng từ chối → `NĐ-CP 78/2025` viết thành `ndcp78-2025`.
+  Ví dụ: `viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025`, `bao-gia-bao-hiem`.
+- Đường dẫn trong SKILL.md luôn **tương đối** so với thư mục skill (vd references/quy-dinh.html), dùng `/`.
 
 ## Frontmatter
 
@@ -39,15 +43,21 @@ name: ten-skill                 # bắt buộc, = tên thư mục
 description: >-                 # bắt buộc, ≤ 1024 ký tự, ngôi thứ ba
   [Skill làm gì]. Dùng khi [tình huống/từ khoá người dùng hay nói].
 license: Xem LICENSE ở thư mục gốc repo
-metadata:                       # tuỳ chọn, chỉ dùng cặp khoá-giá trị đơn giản
+metadata:                       # chỉ dùng cặp khoá-giá trị chuỗi
   version: "1.0.0"
   language: vi
+  category: phap-ly-van-ban     # bắt buộc trong repo này: slug danh mục, khai báo trong categories.json
+  summary: "≤ 160 ký tự"        # bắt buộc: 1 câu ngắn, hiện trong llms.txt và danh sách
+  keywords: "từ khoá 1, từ khoá 2"  # khuyến nghị: dùng cho SEO và tìm kiếm
   source: "[tài liệu gốc, nếu có]"
 ---
 ```
 
 - Chỉ dùng các khoá `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`.
   Khoá lạ có thể làm một số nền tảng từ chối upload.
+- `summary` (≤ 160 ký tự) là dòng duy nhất agent thấy khi **lướt danh mục** (`llms.txt`) — viết sao cho chỉ đọc nó
+  là biết có nên mở skill hay không. `description` dài hơn, dùng khi nền tảng tự chọn skill.
+- `category` phải có trong `categories.json` ở gốc repo (thêm danh mục mới vào đó nếu cần).
 - `description` là thứ agent đọc để **quyết định có dùng skill hay không** → phải nói rõ *làm gì* và *khi nào dùng*,
   liệt kê từ khoá thực tế người dùng sẽ gõ (cả tiếng Việt có dấu). Không dùng ký tự `<` `>` trong description.
 
@@ -83,7 +93,7 @@ Quy tắc viết:
    - bản ASCII trong `<pre>`;
    - khối dữ liệu máy đọc `<script type="application/json">`;
    - (tuỳ chọn) dựng lại hình bằng HTML/CSS hoặc SVG có `aria-label`.
-   Xem ví dụ chuẩn: `skills/the-thuc-van-ban/references/so-do-bo-tri.html`.
+   Xem ví dụ chuẩn: `skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025/references/so-do-bo-tri.html`.
 5. Tóm tắt phần quan trọng nhất thành bảng tra nhanh + checklist trong SKILL.md.
 
 Vì sao HTML5 cho references: một tệp vừa mở được bằng trình duyệt cho người đọc, vừa là văn bản có cấu trúc rõ ràng cho
@@ -100,17 +110,23 @@ python3 scripts/build_skills.py --check  # chỉ kiểm tra hợp lệ (dùng tr
 ```
 
 Script sẽ: kiểm tra frontmatter; tạo `dist/<ten>/<ten>.zip` (upload Claude), `dist/<ten>/<ten>.prompt.md`
-(một tệp duy nhất cho ChatGPT/Gemini/model bất kỳ); cập nhật `skills.json`, danh sách skill trong `index.html`,
-và `.claude-plugin/marketplace.json`. Chi tiết cách import từng nền tảng: `references/nen-tang.md`.
+(một tệp duy nhất cho ChatGPT/Gemini/model bất kỳ); sinh lại toàn bộ lớp điều hướng:
+`llms.txt`, `skills.json`, `index.html`, `danh-muc/<slug>/` (có phân trang), `skills/<ten>/index.html`,
+`sitemap.xml`, `robots.txt`, `.claude-plugin/marketplace.json`. **Không sửa tay các tệp sinh tự động.**
+Chi tiết cách import từng nền tảng: `references/nen-tang.md`.
+
+Lớp điều hướng cho AI (đọc từ nông đến sâu, dừng khi đủ):
+`llms.txt` (1 dòng/skill) → `danh-muc/<slug>/llms.txt` (khi nhiều skill) → `skills/<ten>/SKILL.md` → `references/...`.
 
 Mẫu khởi đầu: sao chép `assets/SKILL.template.md` thành `skills/<ten-skill>/SKILL.md`.
 
 ## Checklist skill hoàn chỉnh
 
 - [ ] Thư mục `skills/<ten>/`, tên không dấu, khớp `name`.
+- [ ] Có `metadata.category` (có trong `categories.json`) và `metadata.summary` ≤ 160 ký tự.
 - [ ] `description` nói rõ làm gì + khi nào dùng, có từ khoá người dùng, ≤ 1024 ký tự.
 - [ ] SKILL.md có: mục đích, bảng tài liệu, phạm vi/nguồn, quy trình, tra nhanh, checklist, đầu ra.
 - [ ] Mọi hình/sơ đồ trong nguồn đã được mô tả bằng lời (+ toạ độ/JSON nếu là bố cục).
 - [ ] Không phụ thuộc tool riêng của một model; đường dẫn tương đối.
 - [ ] references HTML5 tự chứa, mở được offline.
-- [ ] Đã chạy `python3 scripts/build_skills.py` không lỗi và commit cả `dist/`, `skills.json`, `index.html`.
+- [ ] Đã chạy `python3 scripts/build_skills.py` không lỗi và commit toàn bộ tệp sinh ra.

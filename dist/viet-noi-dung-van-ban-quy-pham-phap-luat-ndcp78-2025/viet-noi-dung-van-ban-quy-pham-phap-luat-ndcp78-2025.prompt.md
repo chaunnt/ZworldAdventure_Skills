@@ -1,16 +1,16 @@
-# SKILL: the-thuc-van-ban
+# SKILL: viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025
 
 > Tệp này gộp toàn bộ skill thành một tài liệu duy nhất để dùng với ChatGPT, Gemini hoặc model bất kỳ.
 > Hãy làm theo phần HƯỚNG DẪN CHÍNH; các phần TÀI LIỆU KÈM THEO là tài liệu tra cứu được nhắc tới trong hướng dẫn.
-> Nguồn: https://github.com/chaunnt/ZworldAdventure_Skills/tree/main/skills/the-thuc-van-ban
+> Nguồn: https://github.com/chaunnt/ZworldAdventure_Skills/tree/main/skills/viet-noi-dung-van-ban-quy-pham-phap-luat-ndcp78-2025
 
-**Mô tả / khi nào dùng:** Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật và văn bản hành chính Việt Nam (luật, nghị định, nghị quyết, thông tư, quyết định, lệnh, công văn...) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết công văn, soạn văn bản nhà nước, trình bày Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ, điều khoản, chữ ký, nơi nhận, phụ lục, hoặc kiểm tra một văn bản có đúng thể thức không.
+**Mô tả / khi nào dùng:** Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật Việt Nam (luật, pháp lệnh, nghị quyết, nghị định, quyết định, thông tư, thông tư liên tịch, lệnh) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết hoặc trình bày văn bản QPPL, Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ ban hành, chương/điều/khoản/điểm, chữ ký TM./KT., nơi nhận, phụ lục, sơ đồ bố trí trang A4, hoặc kiểm tra văn bản có đúng thể thức NĐ 78/2025 không.
 
 ---
 
 ## HƯỚNG DẪN CHÍNH (SKILL.md)
 
-# Thể thức, kỹ thuật trình bày văn bản (NĐ 78/2025/NĐ-CP)
+# Viết nội dung văn bản quy phạm pháp luật theo NĐ 78/2025/NĐ-CP
 
 Skill này giúp bạn (agent) **soạn mới** hoặc **rà soát** một văn bản sao cho đúng thể thức
 và kỹ thuật trình bày theo Nghị định 78/2025/NĐ-CP.
@@ -22,21 +22,16 @@ và kỹ thuật trình bày theo Nghị định 78/2025/NĐ-CP.
 | `SKILL.md` (tệp này) | Luôn đọc. Có quy trình, bảng tra nhanh, checklist. |
 | `references/quy-dinh-chi-tiet.html` | Khi cần câu chữ đầy đủ của quy định (số ký hiệu từng loại văn bản, ký thay/thay mặt, địa danh, phụ lục, sửa đổi bổ sung). |
 | `references/so-do-bo-tri.html` | Khi cần biết **vị trí** từng thành phần trên trang A4. Sơ đồ đã được mô tả hoàn toàn bằng lời + toạ độ phần trăm + JSON, không cần nhìn hình. |
-| `assets/mau-van-ban-qppl.html` | Mẫu HTML5 khổ A4 cho văn bản QPPL (nghị định/quyết định/thông tư). Sao chép rồi điền nội dung. |
-| `assets/mau-cong-van.html` | Mẫu HTML5 khổ A4 cho công văn hành chính. |
 
-Các tệp `.html` là HTML5 thuần, đọc được như văn bản; nếu môi trường không mở được tệp phụ, mọi quy tắc
-quan trọng nhất đã có trong bảng tra nhanh bên dưới.
+Thứ tự đọc để tiết kiệm token: tệp này → (nếu cần) đúng mục trong `references/`. Các tệp `.html` là HTML5 thuần,
+đọc được như văn bản; nếu không mở được tệp phụ, quy tắc quan trọng nhất đã có trong bảng tra nhanh bên dưới.
 
 ## Phạm vi và lưu ý về nguồn
 
 - Nguồn gốc của skill: Phụ lục về thể thức, kỹ thuật trình bày **văn bản quy phạm pháp luật (QPPL)**
   ban hành kèm NĐ 78/2025/NĐ-CP.
-- **Công văn hành chính** (không phải văn bản QPPL) về pháp lý chịu sự điều chỉnh của
-  **Nghị định 30/2020/NĐ-CP về công tác văn thư**. Bố cục trang (sơ đồ ô số 1–11), phông chữ, lề và
-  phần lớn quy tắc về cơ bản giống nhau, nên skill vẫn áp dụng được; những điểm riêng của công văn
-  (trích yếu "V/v", "Kính gửi") được ghi rõ là **ngoài tài liệu nguồn** — hãy nhắc người dùng đối chiếu
-  NĐ 30/2020 nếu văn bản cần độ chính xác pháp lý.
+- Phạm vi: chỉ **văn bản QPPL**. Công văn và văn bản hành chính khác thuộc Nghị định 30/2020/NĐ-CP về công tác
+  văn thư — không nằm trong skill này; nếu người dùng cần, hãy nói rõ và chỉ dùng phần bố cục chung một cách thận trọng.
 - Khi quy định cho phép một khoảng (ví dụ cỡ chữ 13–14), hãy chọn **một giá trị và dùng thống nhất**
   trong toàn văn bản (mặc định đề xuất: nội dung 14, các thành phần khác theo bảng).
 - Không bịa số hiệu, ngày ban hành, tên người ký, căn cứ pháp lý. Thiếu thông tin thì để chỗ trống
@@ -45,7 +40,7 @@ quan trọng nhất đã có trong bảng tra nhanh bên dưới.
 ## Quy trình làm việc
 
 1. **Xác định loại văn bản** (luật, pháp lệnh, nghị quyết QH/UBTVQH/HĐND, nghị định, quyết định,
-   thông tư, thông tư liên tịch, nghị quyết liên tịch, lệnh/quyết định Chủ tịch nước, công văn...).
+   thông tư, thông tư liên tịch, nghị quyết liên tịch, lệnh/quyết định Chủ tịch nước).
    Loại văn bản quyết định: cấu trúc số ký hiệu, có/không có địa danh–ngày ở đầu, từ khoá
    "QUYẾT NGHỊ/QUYẾT ĐỊNH/LỆNH", cách ký (TM./KT.), vị trí chữ ký.
 2. **Thu thập dữ liệu**: tên cơ quan ban hành, số thứ tự, năm, chữ viết tắt, địa danh, ngày ký,
@@ -53,8 +48,7 @@ quan trọng nhất đã có trong bảng tra nhanh bên dưới.
 3. **Dựng khung trang** theo `references/so-do-bo-tri.html` (A4 dọc, lề trái 30–35 mm, lề trên/dưới/phải 15–20 mm).
 4. **Điền thành phần thể thức** theo bảng tra nhanh (cỡ chữ, kiểu chữ, căn lề, đường kẻ).
 5. **Trình bày nội dung**: Phần/Chương/Mục/Điều/Khoản/Điểm đúng ký số (La Mã / Ả Rập / chữ cái tiếng Việt).
-6. **Tự kiểm tra** bằng checklist cuối tệp, rồi trả kết quả (HTML theo mẫu, DOCX, hoặc văn bản thuần
-   kèm chú thích định dạng — tuỳ người dùng yêu cầu).
+6. **Tự kiểm tra** bằng checklist, rồi trả kết quả theo mục "Định dạng đầu ra".
 
 Khi **rà soát** văn bản có sẵn: đi lần lượt từng ô 1→11 của sơ đồ và từng dòng của checklist, báo lỗi theo
 dạng `Ô số – thành phần – sai ở đâu – sửa thành gì`.
@@ -157,22 +151,11 @@ Quy ước: **IN HOA** = toàn bộ chữ in hoa; *in thường* = chữ thườ
 - [ ] Số trang canh giữa lề trên, ẩn trang 1; phụ lục đánh số trang riêng.
 - [ ] Phụ lục: được dẫn chiếu trong văn bản; ≥ 2 phụ lục đánh số La Mã; có thông tin chỉ dẫn nghiêng.
 
-## Công văn hành chính (bổ sung, ngoài tài liệu nguồn)
-
-Áp dụng toàn bộ bố cục và định dạng ở trên, cộng thêm các điểm sau (theo thông lệ NĐ 30/2020/NĐ-CP —
-cần đối chiếu khi yêu cầu độ chính xác pháp lý):
-
-- Công văn **không có tên loại văn bản** (ô 5 trống); thay vào đó là **trích yếu** bắt đầu bằng `V/v` đặt canh giữa
-  ngay dưới số ký hiệu (ô 3), chữ in thường, cỡ 12–13, đứng.
-- Dưới phần đầu là dòng `Kính gửi:` (một nơi nhận thì cùng dòng; nhiều nơi thì liệt kê mỗi nơi một dòng có `-`).
-- Ký hiệu công văn thường là `Số: [số]/[viết tắt cơ quan]-[viết tắt đơn vị soạn thảo]` (không có năm, không có tên loại).
-
 ## Định dạng đầu ra
 
-- **HTML/PDF**: sao chép `assets/mau-van-ban-qppl.html` hoặc `assets/mau-cong-van.html`, thay các chỗ `[...]`.
-  Mẫu đã có `@page` A4, lề, phông, đường kẻ, bảng hai cột phần đầu và khối chữ ký/nơi nhận; in ra PDF từ trình duyệt.
-- **DOCX**: dùng cùng thông số (lề tính theo mm, cỡ chữ pt, bảng không viền 2 cột cho phần đầu và phần ký).
-- **Văn bản thuần** (chat): trình bày theo đúng thứ tự thành phần và ghi chú định dạng trong ngoặc vuông,
+- **DOCX / PDF / HTML**: A4 dọc; lề theo mm; cỡ chữ theo pt; phần đầu (ô 1–4) và phần ký (ô 7–9) dùng bảng 2 cột
+  không viền như mô tả ở mục 7 của `references/so-do-bo-tri.html`; số trang ở lề trên, ẩn trang 1.
+- **Văn bản thuần** (chat): trình bày đúng thứ tự thành phần, ghi chú định dạng trong ngoặc vuông,
   ví dụ `[IN HOA, đậm, 13, canh giữa]`.
 
 ---
@@ -392,7 +375,7 @@ Trang A4 đặt **dọc**. Vùng trình bày (vùng có chữ) là một hình c
 - **Mép phải: 15–20 mm**. Trên hình có mũi tên ngang bên phải, chữ "15-20 mm" viết dọc.
 - **Mép trên và mép dưới:** lời văn của Nghị định (Mục I.3) quy định **15–20 mm**.
 
-**Chênh lệch cần biết:** trên hình vẽ gốc, mũi tên ở mép trên và mép dưới ghi **"20-25 mm"**, khác với lời văn (15–20 mm). Khi soạn văn bản QPPL theo NĐ 78/2025, **ưu tiên lời văn: 15–20 mm**. Nếu người dùng soạn công văn hành chính theo NĐ 30/2020, lề trên/dưới 20–25 mm là phổ biến — hãy hỏi lại nếu không rõ.
+**Chênh lệch cần biết:** trên hình vẽ gốc, mũi tên ở mép trên và mép dưới ghi **"20-25 mm"**, khác với lời văn (15–20 mm). Khi soạn văn bản QPPL theo NĐ 78/2025, **ưu tiên lời văn: 15–20 mm**. Mức 20–25 mm là quy định lề của văn bản hành chính (NĐ 30/2020), không thuộc phạm vi skill này.
 
 ## 3. Mô tả sơ đồ bằng lời (đọc từ trên xuống dưới)
 
@@ -528,311 +511,3 @@ Agent có thể dùng khối JSON sau để dựng bố cục (DOCX, PDF, HTML) 
 - **Ô 6**: các đoạn thông thường, canh đều hai lề, thụt đầu dòng 1–1,27 cm.
 - **Phần cuối** (ô 7–9, 11): bảng 2 cột không viền. Cột trái ~45% chứa "Nơi nhận:" và danh sách (cỡ 11–12) ở dòng đầu ngang hàng dòng chức vụ; cột phải ~55% chứa 7a (IN HOA đậm), khoảng trống cho chữ ký + dấu (~25–30 mm), rồi 7b (đậm), tất cả canh giữa trong cột.
 - **Ô 10**: chỉ chèn khi văn bản có độ mật. **Ô 11**: tuỳ cơ quan, đặt ở cuối khối nơi nhận.
-
----
-
-## TÀI LIỆU KÈM THEO: `assets/mau-cong-van.html`
-
-(Tệp mẫu — sao chép nguyên văn khi tạo đầu ra.)
-
-````html
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mẫu công văn</title>
-<!--
-  MẪU CÔNG VĂN HÀNH CHÍNH – bố cục/định dạng theo NĐ 78/2025/NĐ-CP; các điểm riêng của công văn
-  ("V/v", "Kính gửi", ký hiệu không có năm) theo thông lệ NĐ 30/2020/NĐ-CP – cần đối chiếu khi cần chính xác pháp lý.
-  Cách dùng (cho agent):
-    1. Sao chép tệp, thay mọi chỗ [ ... ] bằng dữ liệu thật; xoá khối không dùng.
-    2. Giữ nguyên CSS. Mở bằng trình duyệt → In → Lưu PDF (khổ A4, lề "Mặc định"/"Không" vì lề đã đặt trong @page).
-    3. Công văn không có tên loại văn bản (ô 5); trích yếu "V/v" nằm dưới số ký hiệu.
-  Ánh xạ ô số trên sơ đồ: data-o="1".."11".
--->
-<style>
-  @page {
-    size: A4 portrait;
-    margin: 20mm 20mm 20mm 30mm;            /* trên phải dưới trái: 15–20 / 15–20 / 15–20 / 30–35 mm */
-    @top-center { content: counter(page); font: 13pt "Times New Roman", serif; }
-  }
-  @page :first { @top-center { content: none; } }   /* không hiện số trang 1 */
-
-  html { background: #e9ecef; }
-  body {
-    font-family: "Times New Roman", Times, serif; color: #000; background: #fff;
-    font-size: 14pt; line-height: 1.3;
-    width: 210mm; min-height: 297mm; margin: 0 auto; padding: 20mm 20mm 20mm 30mm; box-sizing: border-box;
-  }
-  @media print { html { background: none; } body { width: auto; min-height: 0; padding: 0; margin: 0; } }
-  @media screen and (max-width: 820px) { body { width: 100%; padding: 16px; } }
-
-  p { margin: 0; }
-  .center { text-align: center; }
-  .b { font-weight: bold; } .i { font-style: italic; } .up { text-transform: none; }
-  .rule-full  { display: block; height: 0; border-top: 1px solid #000; margin: 2px auto 0; }
-  .rule-third { display: block; height: 0; border-top: 1px solid #000; width: 40%; margin: 2px auto 0; } /* 1/3–1/2 dòng chữ */
-
-  /* Phần đầu: bảng 2 cột không viền */
-  table.head, table.sign { width: 100%; border-collapse: collapse; }
-  table.head td, table.sign td { vertical-align: top; padding: 0; }
-  .col-left  { width: 40%; text-align: center; }
-  .col-right { width: 60%; text-align: center; }
-  .co-quan   { font-size: 13pt; font-weight: bold; white-space: nowrap; }                 /* ô 2 */
-  .quoc-hieu { font-size: 13pt; font-weight: bold; white-space: nowrap; }                 /* ô 1 */
-  .tieu-ngu  { font-size: 14pt; font-weight: bold; display: inline-block; }               /* ô 1 */
-  .tieu-ngu-rule { border-top: 1px solid #000; }                                          /* dài bằng dòng chữ */
-  .so-ky-hieu { font-size: 13pt; margin-top: 6pt; }                                       /* ô 3 */
-  .dia-danh   { font-size: 14pt; font-style: italic; margin-top: 6pt; }                   /* ô 4 */
-  .mat        { font-size: 13pt; font-weight: bold; margin-top: 6pt; }                    /* ô 10 */
-
-  .ten-loai   { font-size: 14pt; font-weight: bold; text-align: center; margin-top: 18pt; } /* ô 5 */
-  .ten-goi    { font-size: 14pt; font-weight: bold; text-align: center; }
-  .can-cu     { font-size: 14pt; font-style: italic; text-indent: 1.27cm; text-align: justify; margin-top: 6pt; }
-  .tu-khoa    { font-size: 13pt; font-weight: bold; text-align: center; margin: 12pt 0 6pt; } /* QUYẾT NGHỊ: / QUYẾT ĐỊNH: */
-
-  /* Ô 6 – nội dung */
-  .noi-dung p { text-align: justify; text-indent: 1.27cm; margin-top: 6pt; line-height: 1.3; }
-  .noi-dung p.chuong, .noi-dung p.ten-chuong { text-align: center; text-indent: 0; }
-  .chuong     { font-weight: bold; text-align: center; margin-top: 12pt; }
-  .ten-chuong { font-weight: bold; text-align: center; font-size: 14pt; }
-  .noi-dung p.dieu { font-weight: bold; }
-
-  /* Phần cuối: nơi nhận trái, chữ ký phải */
-  table.sign { margin-top: 12pt; }
-  .noi-nhan-col { width: 45%; text-align: left; }
-  .ky-col { width: 55%; text-align: center; }
-  .noi-nhan-tieu-de { font-size: 12pt; font-weight: bold; font-style: italic; }       /* ô 9 */
-  .noi-nhan { font-size: 11pt; line-height: 1.2; }
-  .chuc-vu { font-size: 13pt; font-weight: bold; }                                     /* ô 7a */
-  .cho-ky  { height: 28mm; }                                                           /* ô 7c + ô 8 */
-  .ho-ten  { font-size: 14pt; font-weight: bold; }                                     /* ô 7b */
-  .danh-may { font-size: 11pt; }                                                       /* ô 11 */
-  .trich-yeu { font-size: 12pt; margin-top: 2pt; }                                      /* trích yếu V/v */
-  .kinh-gui  { font-size: 14pt; text-align: center; margin: 18pt 0 6pt; }
-  .kinh-gui-list { display: inline-block; text-align: left; }
-</style>
-</head>
-<body>
-
-<!-- PHẦN ĐẦU: ô 2, 3 + trích yếu (trái) | ô 1, 4 (phải) -->
-<table class="head">
-  <tr>
-    <td class="col-left">
-      <p class="co-quan" style="font-weight:normal">[CƠ QUAN CHỦ QUẢN]</p>
-      <p class="co-quan" data-o="2">[TÊN CƠ QUAN BAN HÀNH]</p>
-      <span class="rule-third"></span>
-      <p class="so-ky-hieu" data-o="3">Số: [123]/[CQ]-[ĐV]</p>
-      <p class="trich-yeu">V/v [trích yếu nội dung công văn]</p>
-      <!-- ô 10 (chỉ khi có độ mật): <p class="mat" data-o="10">[MẬT]</p> -->
-    </td>
-    <td class="col-right">
-      <p class="quoc-hieu" data-o="1">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
-      <p><span class="tieu-ngu">Độc lập - Tự do - Hạnh phúc<span class="rule-full tieu-ngu-rule"></span></span></p>
-      <p class="dia-danh" data-o="4">[Hà Nội], ngày [05] tháng [02] năm [2025]</p>
-    </td>
-  </tr>
-</table>
-
-<!-- Kính gửi: một nơi thì cùng dòng; nhiều nơi thì liệt kê mỗi nơi một dòng có "-" -->
-<p class="kinh-gui"><span class="kinh-gui-list">Kính gửi: [Tên cơ quan, tổ chức nhận].</span></p>
-<!-- Nhiều nơi nhận:
-<div class="kinh-gui"><div class="kinh-gui-list">
-  <p>Kính gửi:</p>
-  <p style="padding-left:2.5cm">- [Cơ quan A];</p>
-  <p style="padding-left:2.5cm">- [Cơ quan B].</p>
-</div></div> -->
-
-<!-- Ô 6: nội dung -->
-<div class="noi-dung" data-o="6">
-  <p>[Mở đầu: nêu căn cứ/lý do, ví dụ "Thực hiện ..., [Cơ quan] đề nghị ..." ]</p>
-  <p>1. [Nội dung thứ nhất ...]</p>
-  <p>2. [Nội dung thứ hai ...]:</p>
-  <p>a) [...];</p>
-  <p>b) [...].</p>
-  <p>[Kết: đề nghị, đầu mối liên hệ (họ tên, số điện thoại), lời cảm ơn nếu phù hợp].</p>
-</div>
-
-<!-- PHẦN CUỐI: ô 9, 11 (trái) | ô 7a, 7c, 8, 7b (phải) -->
-<table class="sign">
-  <tr>
-    <td class="noi-nhan-col">
-      <p class="noi-nhan-tieu-de" data-o="9">Nơi nhận:</p>
-      <div class="noi-nhan">
-        <p>- Như trên;</p>
-        <p>- [Lãnh đạo cơ quan (để b/c)];</p>
-        <p>- Lưu: VT, [đơn vị soạn thảo] ([số bản lưu]).</p>
-      </div>
-    </td>
-    <td class="ky-col">
-      <p class="chuc-vu" data-o="7a">KT. [GIÁM ĐỐC]</p>
-      <p class="chuc-vu">[PHÓ GIÁM ĐỐC]</p>
-      <div class="cho-ky" data-o="7c 8" aria-label="Chữ ký và dấu"></div>
-      <p class="ho-ten" data-o="7b">[Họ và tên]</p>
-    </td>
-  </tr>
-</table>
-
-</body>
-</html>
-````
-
----
-
-## TÀI LIỆU KÈM THEO: `assets/mau-van-ban-qppl.html`
-
-(Tệp mẫu — sao chép nguyên văn khi tạo đầu ra.)
-
-````html
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mẫu văn bản QPPL</title>
-<!--
-  MẪU VĂN BẢN QUY PHẠM PHÁP LUẬT – theo NĐ 78/2025/NĐ-CP
-  Cách dùng (cho agent):
-    1. Sao chép tệp, thay mọi chỗ [ ... ] bằng dữ liệu thật; xoá khối không dùng.
-    2. Giữ nguyên CSS. Mở bằng trình duyệt → In → Lưu PDF (khổ A4, lề "Mặc định"/"Không" vì lề đã đặt trong @page).
-    3. Ví dụ dưới đây là một NGHỊ ĐỊNH; đổi tên loại, ký hiệu, khối ký cho loại văn bản khác (xem SKILL.md).
-  Ánh xạ ô số trên sơ đồ: data-o="1".."11".
--->
-<style>
-  @page {
-    size: A4 portrait;
-    margin: 20mm 20mm 20mm 30mm;            /* trên phải dưới trái: 15–20 / 15–20 / 15–20 / 30–35 mm */
-    @top-center { content: counter(page); font: 13pt "Times New Roman", serif; }
-  }
-  @page :first { @top-center { content: none; } }   /* không hiện số trang 1 */
-
-  html { background: #e9ecef; }
-  body {
-    font-family: "Times New Roman", Times, serif; color: #000; background: #fff;
-    font-size: 14pt; line-height: 1.3;
-    width: 210mm; min-height: 297mm; margin: 0 auto; padding: 20mm 20mm 20mm 30mm; box-sizing: border-box;
-  }
-  @media print { html { background: none; } body { width: auto; min-height: 0; padding: 0; margin: 0; } }
-  @media screen and (max-width: 820px) { body { width: 100%; padding: 16px; } }
-
-  p { margin: 0; }
-  .center { text-align: center; }
-  .b { font-weight: bold; } .i { font-style: italic; } .up { text-transform: none; }
-  .rule-full  { display: block; height: 0; border-top: 1px solid #000; margin: 2px auto 0; }
-  .rule-third { display: block; height: 0; border-top: 1px solid #000; width: 40%; margin: 2px auto 0; } /* 1/3–1/2 dòng chữ */
-
-  /* Phần đầu: bảng 2 cột không viền */
-  table.head, table.sign { width: 100%; border-collapse: collapse; }
-  table.head td, table.sign td { vertical-align: top; padding: 0; }
-  .col-left  { width: 40%; text-align: center; }
-  .col-right { width: 60%; text-align: center; }
-  .co-quan   { font-size: 13pt; font-weight: bold; white-space: nowrap; }                 /* ô 2 */
-  .quoc-hieu { font-size: 13pt; font-weight: bold; white-space: nowrap; }                 /* ô 1 */
-  .tieu-ngu  { font-size: 14pt; font-weight: bold; display: inline-block; }               /* ô 1 */
-  .tieu-ngu-rule { border-top: 1px solid #000; }                                          /* dài bằng dòng chữ */
-  .so-ky-hieu { font-size: 13pt; margin-top: 6pt; }                                       /* ô 3 */
-  .dia-danh   { font-size: 14pt; font-style: italic; margin-top: 6pt; }                   /* ô 4 */
-  .mat        { font-size: 13pt; font-weight: bold; margin-top: 6pt; }                    /* ô 10 */
-
-  .ten-loai   { font-size: 14pt; font-weight: bold; text-align: center; margin-top: 18pt; } /* ô 5 */
-  .ten-goi    { font-size: 14pt; font-weight: bold; text-align: center; }
-  .can-cu     { font-size: 14pt; font-style: italic; text-indent: 1.27cm; text-align: justify; margin-top: 6pt; }
-  .tu-khoa    { font-size: 13pt; font-weight: bold; text-align: center; margin: 12pt 0 6pt; } /* QUYẾT NGHỊ: / QUYẾT ĐỊNH: */
-
-  /* Ô 6 – nội dung */
-  .noi-dung p { text-align: justify; text-indent: 1.27cm; margin-top: 6pt; line-height: 1.3; }
-  .noi-dung p.chuong, .noi-dung p.ten-chuong { text-align: center; text-indent: 0; }
-  .chuong     { font-weight: bold; text-align: center; margin-top: 12pt; }
-  .ten-chuong { font-weight: bold; text-align: center; font-size: 14pt; }
-  .noi-dung p.dieu { font-weight: bold; }
-
-  /* Phần cuối: nơi nhận trái, chữ ký phải */
-  table.sign { margin-top: 12pt; }
-  .noi-nhan-col { width: 45%; text-align: left; }
-  .ky-col { width: 55%; text-align: center; }
-  .noi-nhan-tieu-de { font-size: 12pt; font-weight: bold; font-style: italic; }       /* ô 9 */
-  .noi-nhan { font-size: 11pt; line-height: 1.2; }
-  .chuc-vu { font-size: 13pt; font-weight: bold; }                                     /* ô 7a */
-  .cho-ky  { height: 28mm; }                                                           /* ô 7c + ô 8 */
-  .ho-ten  { font-size: 14pt; font-weight: bold; }                                     /* ô 7b */
-  .danh-may { font-size: 11pt; }                                                       /* ô 11 */
-</style>
-</head>
-<body>
-
-<!-- PHẦN ĐẦU: ô 2, 3 (trái) | ô 1, 4 (phải) -->
-<table class="head">
-  <tr>
-    <td class="col-left">
-      <p class="co-quan" data-o="2">CHÍNH PHỦ</p>
-      <span class="rule-third"></span>
-      <p class="so-ky-hieu" data-o="3">Số: [01]/[2025]/NĐ-CP</p>
-      <!-- ô 10 (chỉ khi văn bản có độ mật): <p class="mat" data-o="10">[MẬT]</p> -->
-    </td>
-    <td class="col-right">
-      <p class="quoc-hieu" data-o="1">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
-      <p><span class="tieu-ngu">Độc lập - Tự do - Hạnh phúc<span class="rule-full tieu-ngu-rule"></span></span></p>
-      <p class="dia-danh" data-o="4">[Hà Nội], ngày [05] tháng [02] năm [2025]</p>
-    </td>
-  </tr>
-</table>
-
-<!-- Ô 5: tên văn bản -->
-<p class="ten-loai" data-o="5">NGHỊ ĐỊNH</p>
-<p class="ten-goi">[Quy định chi tiết một số điều của Luật ...]</p>
-<span class="rule-third" style="width:30%"></span>
-
-<!-- Căn cứ ban hành: nghiêng 14, mỗi căn cứ một dòng, kết thúc ";" -->
-<p class="can-cu" style="margin-top:14pt">Căn cứ [Luật Tổ chức Chính phủ số .../.../QH...];</p>
-<p class="can-cu">Căn cứ [Luật ...];</p>
-<p class="can-cu">Theo đề nghị của [Bộ trưởng Bộ ...];</p>
-<p class="can-cu">Chính phủ ban hành Nghị định [quy định chi tiết ...].</p>
-
-<!-- Ô 6: nội dung -->
-<div class="noi-dung" data-o="6">
-  <p class="chuong" style="text-indent:0">Chương I</p>
-  <p class="ten-chuong" style="text-indent:0">[QUY ĐỊNH CHUNG]</p>
-
-  <p class="dieu">Điều 1. [Phạm vi điều chỉnh]</p>
-  <p>[Nội dung điều 1 ...]</p>
-
-  <p class="dieu">Điều 2. [Đối tượng áp dụng]</p>
-  <p>1. [Khoản 1 ...]</p>
-  <p>2. [Khoản 2 ...]:</p>
-  <p>a) [Điểm a ...];</p>
-  <p>b) [Điểm b ...];</p>
-  <p>đ) [Lưu ý: thứ tự chữ cái tiếng Việt a, b, c, d, đ, e, g, h, i, k ...].</p>
-
-  <p class="chuong" style="text-indent:0">Chương II</p>
-  <p class="ten-chuong" style="text-indent:0">[ĐIỀU KHOẢN THI HÀNH]</p>
-  <p class="dieu">Điều 3. Hiệu lực thi hành</p>
-  <p>Nghị định này có hiệu lực thi hành từ ngày [...] tháng [...] năm [...].</p>
-</div>
-
-<!-- PHẦN CUỐI: ô 9, 11 (trái) | ô 7a, 7c, 8, 7b (phải). "Nơi nhận:" ngang hàng dòng chức vụ -->
-<table class="sign">
-  <tr>
-    <td class="noi-nhan-col">
-      <p class="noi-nhan-tieu-de" data-o="9">Nơi nhận:</p>
-      <div class="noi-nhan">
-        <p>- [Ban Bí thư Trung ương Đảng];</p>
-        <p>- [Thủ tướng, các Phó Thủ tướng Chính phủ];</p>
-        <p>- [Các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ];</p>
-        <p>- [Văn phòng Chính phủ: ..., Công báo];</p>
-        <p>- Lưu: VT, [đơn vị soạn thảo] ([số bản lưu]).</p>
-      </div>
-      <!-- ô 11 (nếu cơ quan dùng): <p class="danh-may" data-o="11">[KH người đánh máy, số bản]</p> -->
-    </td>
-    <td class="ky-col">
-      <p class="chuc-vu" data-o="7a">TM. CHÍNH PHỦ</p>
-      <p class="chuc-vu">THỦ TƯỚNG</p>
-      <div class="cho-ky" data-o="7c 8" aria-label="Chữ ký và dấu"></div>
-      <p class="ho-ten" data-o="7b">[Họ và tên]</p>
-    </td>
-  </tr>
-</table>
-
-</body>
-</html>
-````
