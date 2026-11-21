@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mẫu văn bản QPPL</title>
+<!--
+  MẪU VĂN BẢN QUY PHẠM PHÁP LUẬT – theo NĐ 78/2025/NĐ-CP
+  Cách dùng (cho agent):
+    1. Sao chép tệp, thay mọi chỗ [ ... ] bằng dữ liệu thật; xoá khối không dùng.
+    2. Giữ nguyên CSS. Mở bằng trình duyệt → In → Lưu PDF (khổ A4, lề "Mặc định"/"Không" vì lề đã đặt trong @page).
+    3. Ví dụ dưới đây là một NGHỊ ĐỊNH; đổi tên loại, ký hiệu, khối ký cho loại văn bản khác (xem SKILL.md).
+  Ánh xạ ô số trên sơ đồ: data-o="1".."11".
+-->
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 20mm 20mm 20mm 30mm;            /* trên phải dưới trái: 15–20 / 15–20 / 15–20 / 30–35 mm */
+    @top-center { content: counter(page); font: 13pt "Times New Roman", serif; }
+  }
+  @page :first { @top-center { content: none; } }   /* không hiện số trang 1 */
+
+  html { background: #e9ecef; }
+  body {
+    font-family: "Times New Roman", Times, serif; color: #000; background: #fff;
+    font-size: 14pt; line-height: 1.3;
+    width: 210mm; min-height: 297mm; margin: 0 auto; padding: 20mm 20mm 20mm 30mm; box-sizing: border-box;
+  }
+  @media print { html { background: none; } body { width: auto; min-height: 0; padding: 0; margin: 0; } }
+  @media screen and (max-width: 820px) { body { width: 100%; padding: 16px; } }
+
+  p { margin: 0; }
+  .center { text-align: center; }
+  .b { font-weight: bold; } .i { font-style: italic; } .up { text-transform: none; }
+  .rule-full  { display: block; height: 0; border-top: 1px solid #000; margin: 2px auto 0; }
+  .rule-third { display: block; height: 0; border-top: 1px solid #000; width: 40%; margin: 2px auto 0; } /* 1/3–1/2 dòng chữ */
+
+  /* Phần đầu: bảng 2 cột không viền */
+  table.head, table.sign { width: 100%; border-collapse: collapse; }
+  table.head td, table.sign td { vertical-align: top; padding: 0; }
+  .col-left  { width: 40%; text-align: center; }
+  .col-right { width: 60%; text-align: center; }
+  .co-quan   { font-size: 13pt; font-weight: bold; white-space: nowrap; }                 /* ô 2 */
+  .quoc-hieu { font-size: 13pt; font-weight: bold; white-space: nowrap; }                 /* ô 1 */
+  .tieu-ngu  { font-size: 14pt; font-weight: bold; display: inline-block; }               /* ô 1 */
+  .tieu-ngu-rule { border-top: 1px solid #000; }                                          /* dài bằng dòng chữ */
+  .so-ky-hieu { font-size: 13pt; margin-top: 6pt; }                                       /* ô 3 */
+  .dia-danh   { font-size: 14pt; font-style: italic; margin-top: 6pt; }                   /* ô 4 */
+  .mat        { font-size: 13pt; font-weight: bold; margin-top: 6pt; }                    /* ô 10 */
+
+  .ten-loai   { font-size: 14pt; font-weight: bold; text-align: center; margin-top: 18pt; } /* ô 5 */
+  .ten-goi    { font-size: 14pt; font-weight: bold; text-align: center; }
+  .can-cu     { font-size: 14pt; font-style: italic; text-indent: 1.27cm; text-align: justify; margin-top: 6pt; }
+  .tu-khoa    { font-size: 13pt; font-weight: bold; text-align: center; margin: 12pt 0 6pt; } /* QUYẾT NGHỊ: / QUYẾT ĐỊNH: */
+
+  /* Ô 6 – nội dung */
+  .noi-dung p { text-align: justify; text-indent: 1.27cm; margin-top: 6pt; line-height: 1.3; }
+  .noi-dung p.chuong, .noi-dung p.ten-chuong { text-align: center; text-indent: 0; }
+  .chuong     { font-weight: bold; text-align: center; margin-top: 12pt; }
+  .ten-chuong { font-weight: bold; text-align: center; font-size: 14pt; }
+  .noi-dung p.dieu { font-weight: bold; }
+
+  /* Phần cuối: nơi nhận trái, chữ ký phải */
+  table.sign { margin-top: 12pt; }
+  .noi-nhan-col { width: 45%; text-align: left; }
+  .ky-col { width: 55%; text-align: center; }
+  .noi-nhan-tieu-de { font-size: 12pt; font-weight: bold; font-style: italic; }       /* ô 9 */
+  .noi-nhan { font-size: 11pt; line-height: 1.2; }
+  .chuc-vu { font-size: 13pt; font-weight: bold; }                                     /* ô 7a */
+  .cho-ky  { height: 28mm; }                                                           /* ô 7c + ô 8 */
+  .ho-ten  { font-size: 14pt; font-weight: bold; }                                     /* ô 7b */
+  .danh-may { font-size: 11pt; }                                                       /* ô 11 */
+</style>
+</head>
+<body>
+
+<!-- PHẦN ĐẦU: ô 2, 3 (trái) | ô 1, 4 (phải) -->
+<table class="head">
+  <tr>
+    <td class="col-left">
+      <p class="co-quan" data-o="2">CHÍNH PHỦ</p>
+      <span class="rule-third"></span>
+      <p class="so-ky-hieu" data-o="3">Số: [01]/[2025]/NĐ-CP</p>
+      <!-- ô 10 (chỉ khi văn bản có độ mật): <p class="mat" data-o="10">[MẬT]</p> -->
+    </td>
+    <td class="col-right">
+      <p class="quoc-hieu" data-o="1">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+      <p><span class="tieu-ngu">Độc lập - Tự do - Hạnh phúc<span class="rule-full tieu-ngu-rule"></span></span></p>
+      <p class="dia-danh" data-o="4">[Hà Nội], ngày [05] tháng [02] năm [2025]</p>
+    </td>
+  </tr>
+</table>
+
+<!-- Ô 5: tên văn bản -->
+<p class="ten-loai" data-o="5">NGHỊ ĐỊNH</p>
+<p class="ten-goi">[Quy định chi tiết một số điều của Luật ...]</p>
+<span class="rule-third" style="width:30%"></span>
+
+<!-- Căn cứ ban hành: nghiêng 14, mỗi căn cứ một dòng, kết thúc ";" -->
+<p class="can-cu" style="margin-top:14pt">Căn cứ [Luật Tổ chức Chính phủ số .../.../QH...];</p>
+<p class="can-cu">Căn cứ [Luật ...];</p>
+<p class="can-cu">Theo đề nghị của [Bộ trưởng Bộ ...];</p>
+<p class="can-cu">Chính phủ ban hành Nghị định [quy định chi tiết ...].</p>
+
+<!-- Ô 6: nội dung -->
+<div class="noi-dung" data-o="6">
+  <p class="chuong" style="text-indent:0">Chương I</p>
+  <p class="ten-chuong" style="text-indent:0">[QUY ĐỊNH CHUNG]</p>
+
+  <p class="dieu">Điều 1. [Phạm vi điều chỉnh]</p>
+  <p>[Nội dung điều 1 ...]</p>
+
+  <p class="dieu">Điều 2. [Đối tượng áp dụng]</p>
+  <p>1. [Khoản 1 ...]</p>
+  <p>2. [Khoản 2 ...]:</p>
+  <p>a) [Điểm a ...];</p>
+  <p>b) [Điểm b ...];</p>
+  <p>đ) [Lưu ý: thứ tự chữ cái tiếng Việt a, b, c, d, đ, e, g, h, i, k ...].</p>
+
+  <p class="chuong" style="text-indent:0">Chương II</p>
+  <p class="ten-chuong" style="text-indent:0">[ĐIỀU KHOẢN THI HÀNH]</p>
+  <p class="dieu">Điều 3. Hiệu lực thi hành</p>
+  <p>Nghị định này có hiệu lực thi hành từ ngày [...] tháng [...] năm [...].</p>
+</div>
+
+<!-- PHẦN CUỐI: ô 9, 11 (trái) | ô 7a, 7c, 8, 7b (phải). "Nơi nhận:" ngang hàng dòng chức vụ -->
+<table class="sign">
+  <tr>
+    <td class="noi-nhan-col">
+      <p class="noi-nhan-tieu-de" data-o="9">Nơi nhận:</p>
+      <div class="noi-nhan">
+        <p>- [Ban Bí thư Trung ương Đảng];</p>
+        <p>- [Thủ tướng, các Phó Thủ tướng Chính phủ];</p>
+        <p>- [Các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ];</p>
+        <p>- [Văn phòng Chính phủ: ..., Công báo];</p>
+        <p>- Lưu: VT, [đơn vị soạn thảo] ([số bản lưu]).</p>
+      </div>
+      <!-- ô 11 (nếu cơ quan dùng): <p class="danh-may" data-o="11">[KH người đánh máy, số bản]</p> -->
+    </td>
+    <td class="ky-col">
+      <p class="chuc-vu" data-o="7a">TM. CHÍNH PHỦ</p>
+      <p class="chuc-vu">THỦ TƯỚNG</p>
+      <div class="cho-ky" data-o="7c 8" aria-label="Chữ ký và dấu"></div>
+      <p class="ho-ten" data-o="7b">[Họ và tên]</p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

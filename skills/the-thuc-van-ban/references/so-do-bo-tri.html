@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sơ đồ bố trí thành phần thể thức</title>
+<meta name="description" content="Mô tả bằng lời, toạ độ và JSON sơ đồ bố trí các thành phần thể thức văn bản trên trang A4 theo NĐ 78/2025/NĐ-CP, dành cho người và AI agent.">
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1b1f24; --muted: #5b6572; --line: #c9d1da;
+    --paper: #ffffff; --box: #eef4ff; --box-line: #3b6fd8; --accent: #b42318;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111418; --fg: #e6e9ee; --muted: #9aa5b1; --line: #343b44;
+      --paper: #1a1f26; --box: #1d2a44; --box-line: #7aa2ff; --accent: #ff8a80;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin-top: 2.2em; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+  .muted { color: var(--muted); }
+  table { border-collapse: collapse; width: 100%; font-size: .92rem; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: var(--box); }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .88rem; }
+  pre { background: var(--box); padding: 12px; overflow-x: auto; border-radius: 6px; line-height: 1.25; }
+  .note { border-left: 4px solid var(--accent); padding: 8px 12px; background: var(--box); }
+  /* Hình minh hoạ trang A4 */
+  .a4 { position: relative; width: min(100%, 420px); aspect-ratio: 210 / 297; margin: 16px auto;
+        background: var(--paper); border: 2px solid var(--fg); }
+  .text-area { position: absolute; left: 15.7%; right: 8.3%; top: 5.9%; bottom: 5.9%;
+               border: 1px dashed var(--muted); }
+  .box { position: absolute; border: 1.5px solid var(--box-line); background: var(--box);
+         display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .8rem; }
+  .circle { border-radius: 50%; background: transparent; z-index: 2; }
+  .dim { position: absolute; font-size: .7rem; color: var(--muted); white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>Sơ đồ bố trí các thành phần thể thức văn bản</h1>
+  <p class="muted">Trên một trang giấy khổ A4 (210 mm × 297 mm). Nguồn: Phần IV Phụ lục thể thức, kỹ thuật trình bày
+  văn bản QPPL – Nghị định 78/2025/NĐ-CP. Bản gốc là một hình vẽ; tài liệu này chuyển toàn bộ hình vẽ thành lời,
+  bảng toạ độ và JSON để AI agent hiểu được mà không cần xem ảnh.</p>
+</header>
+
+<section id="chu-giai">
+<h2>1. Chú giải ô số (giữ nguyên theo bản gốc)</h2>
+<table>
+  <thead><tr><th>Ô số</th><th>Thành phần thể thức văn bản</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Quốc hiệu và Tiêu ngữ</td></tr>
+    <tr><td>2</td><td>Tên cơ quan, tổ chức ban hành văn bản</td></tr>
+    <tr><td>3</td><td>Số, ký hiệu của văn bản</td></tr>
+    <tr><td>4</td><td>Địa danh và ngày, tháng, năm ban hành văn bản</td></tr>
+    <tr><td>5</td><td>Tên văn bản</td></tr>
+    <tr><td>6</td><td>Nội dung văn bản</td></tr>
+    <tr><td>7a, 7b, 7c</td><td>Chức vụ (7a), họ và tên (7b) và chữ ký (7c) của người có thẩm quyền</td></tr>
+    <tr><td>8</td><td>Dấu của cơ quan, tổ chức</td></tr>
+    <tr><td>9</td><td>Nơi nhận</td></tr>
+    <tr><td>10</td><td>Dấu chỉ mức độ mật</td></tr>
+    <tr><td>11</td><td>Ký hiệu người đánh máy và số lượng bản phát hành</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section id="le-trang">
+<h2>2. Khung trang và lề</h2>
+<p>Trang A4 đặt <strong>dọc</strong>. Vùng trình bày (vùng có chữ) là một hình chữ nhật nằm bên trong trang, cách các mép giấy:</p>
+<ul>
+  <li><strong>Mép trái: 30–35 mm</strong> (lề rộng nhất, để đóng quyển). Trên hình có mũi tên ngang ở giữa chiều cao trang, ghi "30-35 mm".</li>
+  <li><strong>Mép phải: 15–20 mm</strong>. Trên hình có mũi tên ngang bên phải, chữ "15-20 mm" viết dọc.</li>
+  <li><strong>Mép trên và mép dưới:</strong> lời văn của Nghị định (Mục I.3) quy định <strong>15–20 mm</strong>.</li>
+</ul>
+<p class="note"><strong>Chênh lệch cần biết:</strong> trên hình vẽ gốc, mũi tên ở mép trên và mép dưới ghi
+<strong>"20-25 mm"</strong>, khác với lời văn (15–20 mm). Khi soạn văn bản QPPL theo NĐ 78/2025, <strong>ưu tiên lời văn: 15–20 mm</strong>.
+Nếu người dùng soạn công văn hành chính theo NĐ 30/2020, lề trên/dưới 20–25 mm là phổ biến — hãy hỏi lại nếu không rõ.</p>
+</section>
+
+<section id="mo-ta-bang-loi">
+<h2>3. Mô tả sơ đồ bằng lời (đọc từ trên xuống dưới)</h2>
+<p>Hãy hình dung vùng trình bày chia làm <strong>hai cột phần đầu</strong> (trái và phải), một <strong>thân văn bản rộng toàn bộ</strong>,
+và <strong>hai cột phần cuối</strong> (nơi nhận bên trái, chữ ký bên phải). Cụ thể:</p>
+<ol>
+  <li><strong>Hàng 1 – sát mép trên vùng trình bày</strong>:
+    <ul>
+      <li>Bên <strong>trái</strong>: <strong>ô 2 – Tên cơ quan ban hành</strong>. Ô bắt đầu sát lề trái, rộng khoảng 1/3 vùng trình bày.</li>
+      <li>Bên <strong>phải</strong>: <strong>ô 1 – Quốc hiệu</strong> (và Tiêu ngữ ngay dưới). Ô kết thúc sát lề phải, rộng khoảng 2/5 vùng trình bày.</li>
+      <li>Ô 2 và ô 1 nằm <strong>ngang hàng nhau</strong> (cùng dòng trên cùng). Khoảng giữa hai ô để trống.</li>
+    </ul>
+  </li>
+  <li><strong>Hàng 2 – ngay dưới hàng 1</strong>:
+    <ul>
+      <li>Bên trái, thẳng cột dưới ô 2: <strong>ô 3 – Số, ký hiệu</strong> (cùng độ rộng và cùng trục giữa với ô 2).</li>
+      <li>Bên phải, thẳng cột dưới ô 1: <strong>ô 4 – Địa danh, ngày tháng năm</strong> (cùng độ rộng và trục giữa với ô 1).</li>
+      <li>Ô 3 và ô 4 <strong>cùng một dòng</strong> — đúng quy tắc "địa danh, ngày tháng năm trình bày trên cùng một dòng với số, ký hiệu".</li>
+    </ul>
+  </li>
+  <li><strong>Hàng 3</strong>: <strong>ô 5 – Tên văn bản</strong>, nằm <strong>giữa trang theo chiều ngang</strong>, rộng khoảng 2/5 vùng trình bày, dưới hàng 2.</li>
+  <li><strong>Hàng 4</strong>: <strong>ô 10 – Dấu chỉ mức độ mật</strong>, sát lề <strong>trái</strong>, nhỏ (khoảng 1/5 vùng trình bày), dưới ô 5 và trên thân văn bản.
+      Ô này chỉ xuất hiện khi văn bản có độ mật.</li>
+  <li><strong>Khoảng trống</strong> giữa ô 10 và thân văn bản: nơi trình bày căn cứ ban hành và các dòng như "QUYẾT ĐỊNH:" (thuộc phần mở đầu/nội dung).</li>
+  <li><strong>Thân văn bản – ô 6 – Nội dung</strong>: một khối chữ nhật lớn <strong>chiếm toàn bộ chiều rộng</strong> vùng trình bày (từ lề trái đến lề phải),
+      nằm khoảng giữa trang theo chiều dọc (trên hình chiếm khoảng 1/3 chiều cao). Trong thực tế ô 6 dài theo độ dài nội dung và có thể sang nhiều trang.</li>
+  <li><strong>Phần cuối – dưới ô 6</strong>, chia hai bên:
+    <ul>
+      <li><strong>Bên trái – ô 9 – Nơi nhận</strong>: khối sát lề trái, rộng khoảng 1/4 vùng trình bày. Đỉnh ô 9 <strong>ngang hàng với ô 7a</strong>
+          (dòng "Nơi nhận:" ngang hàng dòng chức vụ người ký). Ô 9 có hình chữ L: góc <strong>dưới bên phải</strong> của nó bị khuyết để đặt
+          <strong>ô 11 – Ký hiệu người đánh máy, số lượng bản phát hành</strong> (ô nhỏ nằm ở góc dưới phải khối nơi nhận).</li>
+      <li><strong>Bên phải – khối chữ ký</strong>, từ khoảng giữa trang đến lề phải, xếp dọc từ trên xuống:
+        <ol type="a">
+          <li><strong>ô 7a – Quyền hạn, chức vụ người ký</strong> (vd "TM. CHÍNH PHỦ / THỦ TƯỚNG"): ô rộng, trên cùng.</li>
+          <li><strong>ô 7c – Chữ ký</strong>: ô nhỏ ở giữa, hơi lệch phải, ngay dưới 7a.</li>
+          <li><strong>ô 8 – Dấu</strong>: hình <strong>tròn</strong> nằm bên trái ô 7c và <strong>chồng lên phần bên trái của chữ ký 7c</strong>.</li>
+          <li><strong>ô 7b – Họ và tên người ký</strong>: ô rộng ở dưới cùng, dưới chữ ký và dấu, cùng trục giữa với 7a.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>Dưới khối chữ ký là khoảng trống tới lề dưới.</li>
+</ol>
+</section>
+
+<section id="hinh-minh-hoa">
+<h2>4. Hình minh hoạ dựng lại bằng HTML/CSS</h2>
+<p class="muted">Tỷ lệ dựng theo hình gốc, chỉ để minh hoạ vị trí tương đối – không phải kích thước in chính xác.</p>
+<div class="a4" role="img" aria-label="Trang A4 dọc. Hàng trên: ô 2 bên trái, ô 1 bên phải. Hàng hai: ô 3 trái, ô 4 phải. Ô 5 giữa. Ô 10 trái. Ô 6 rộng toàn trang ở giữa. Dưới: ô 9 trái có ô 11 ở góc dưới phải; bên phải xếp dọc 7a, 7c có dấu tròn 8 chồng bên trái, rồi 7b.">
+  <span class="dim" style="left:1%;top:48%">30–35 mm →</span>
+  <span class="dim" style="right:0;top:52%">← 15–20</span>
+  <span class="dim" style="left:44%;top:2%">↓ lề trên</span>
+  <span class="dim" style="left:44%;bottom:2%">↑ lề dưới</span>
+  <div class="text-area">
+    <div class="box" style="left:0;width:32%;top:0;height:4.1%">2</div>
+    <div class="box" style="left:57%;width:41%;top:0;height:4.1%">1. Quốc hiệu</div>
+    <div class="box" style="left:0;width:32%;top:6.4%;height:4.2%">3</div>
+    <div class="box" style="left:57%;width:41%;top:6.4%;height:4.2%">4</div>
+    <div class="box" style="left:36%;width:38%;top:12.6%;height:4.4%">5</div>
+    <div class="box" style="left:0;width:18%;top:19.4%;height:4.5%">10</div>
+    <div class="box" style="left:0;width:100%;top:33.5%;height:32.1%">6</div>
+    <div class="box" style="left:0;width:24%;top:69.7%;height:9.5%;justify-content:center">9</div>
+    <div class="box" style="left:0;width:16%;top:79%;height:4.5%;border-top:none"></div>
+    <div class="box" style="left:16%;width:8%;top:79.2%;height:4.3%">11</div>
+    <div class="box" style="left:49%;width:49%;top:69.3%;height:4.6%">7a</div>
+    <div class="box" style="left:71%;width:17%;top:78.4%;height:4.6%">7c</div>
+    <div class="box circle" style="left:59%;width:16%;top:74.6%;height:11.4%"><span style="margin-right:30%">8</span></div>
+    <div class="box" style="left:52%;width:44%;top:86.4%;height:4.4%">7b</div>
+  </div>
+</div>
+
+<p>Biểu diễn ASCII tương đương (trái → phải là lề trái → lề phải):</p>
+<pre>
++------------------------------------------------------------+
+|        lề trên (15–20 mm theo lời văn; hình ghi 20–25)     |
+|   +--------+                         +----------------+    |
+|   |   2    |                         | 1. Quốc hiệu   |    |
+|   +--------+                         +----------------+    |
+|   |   3    |                         |       4        |    |
+|   +--------+     +-------------+     +----------------+    |
+|                  |      5      |                           |
+|   +----+         +-------------+                           |
+|30 | 10 |                                                15 |
+|-  +----+                                                -  |
+|35   (căn cứ ban hành, QUYẾT ĐỊNH: ...)                  20 |
+|mm +---------------------------------------------------+ mm |
+|   |                         6                         |    |
+|   |                (nội dung văn bản)                 |    |
+|   +---------------------------------------------------+    |
+|   +-------+               +----------------------+         |
+|   |   9   |               |          7a          |         |
+|   |       |          ( 8 )+------+                         |
+|   |   +---+          (dấu)|  7c  |                         |
+|   |   |11 |               +------+                         |
+|   +---+---+              +--------------------+            |
+|                          |         7b         |            |
+|                          +--------------------+            |
+|        lề dưới (15–20 mm theo lời văn; hình ghi 20–25)     |
++------------------------------------------------------------+
+</pre>
+</section>
+
+<section id="toa-do">
+<h2>5. Bảng toạ độ tương đối</h2>
+<p>Đơn vị: phần trăm của <strong>vùng trình bày</strong> (không tính lề). <code>x</code> tính từ lề trái, <code>y</code> tính từ lề trên.
+Số liệu đo trên hình gốc, sai số khoảng ±2%.</p>
+<table>
+  <thead><tr><th>Ô</th><th>x từ</th><th>x đến</th><th>y từ</th><th>y đến</th><th>Căn lề chữ trong ô</th><th>Neo / quan hệ</th></tr></thead>
+  <tbody>
+    <tr><td>2</td><td>0</td><td>32</td><td>0</td><td>4</td><td>giữa</td><td>Ngang hàng ô 1</td></tr>
+    <tr><td>1</td><td>57</td><td>98</td><td>0</td><td>4</td><td>giữa</td><td>Sát lề phải</td></tr>
+    <tr><td>3</td><td>0</td><td>32</td><td>6</td><td>11</td><td>giữa</td><td>Dưới ô 2, cùng trục giữa</td></tr>
+    <tr><td>4</td><td>57</td><td>98</td><td>6</td><td>11</td><td>giữa</td><td>Dưới ô 1, cùng dòng ô 3</td></tr>
+    <tr><td>5</td><td>36</td><td>74</td><td>13</td><td>17</td><td>giữa</td><td>Giữa trang</td></tr>
+    <tr><td>10</td><td>0</td><td>18</td><td>19</td><td>24</td><td>trái</td><td>Dưới ô 5, sát lề trái</td></tr>
+    <tr><td>6</td><td>0</td><td>100</td><td>34</td><td>66</td><td>đều hai lề</td><td>Toàn chiều rộng; cao theo nội dung</td></tr>
+    <tr><td>9</td><td>0</td><td>24</td><td>70</td><td>84</td><td>trái</td><td>Đỉnh ngang hàng ô 7a</td></tr>
+    <tr><td>11</td><td>16</td><td>24</td><td>79</td><td>84</td><td>trái</td><td>Góc dưới phải của ô 9</td></tr>
+    <tr><td>7a</td><td>49</td><td>98</td><td>69</td><td>74</td><td>giữa</td><td>Dưới ô 6, bên phải</td></tr>
+    <tr><td>7c</td><td>71</td><td>88</td><td>78</td><td>83</td><td>giữa</td><td>Dưới 7a</td></tr>
+    <tr><td>8</td><td>59</td><td>75</td><td>75</td><td>86</td><td>—</td><td>Hình tròn, chồng phần trái của 7c</td></tr>
+    <tr><td>7b</td><td>52</td><td>96</td><td>86</td><td>91</td><td>giữa</td><td>Dưới 7c và 8, cùng trục giữa 7a</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section id="json">
+<h2>6. Dữ liệu máy đọc (JSON)</h2>
+<p>Agent có thể dùng khối JSON sau để dựng bố cục (DOCX, PDF, HTML) một cách chương trình hoá.</p>
+<script type="application/json" id="layout-spec">
+{
+  "page": { "size": "A4", "width_mm": 210, "height_mm": 297, "orientation": "portrait",
+            "orientation_appendix_tables": "landscape allowed" },
+  "margins_mm": { "left": [30, 35], "right": [15, 20], "top": [15, 20], "bottom": [15, 20],
+                  "note": "Hinh goc ghi top/bottom 20-25 mm; loi van ND 78/2025 quy dinh 15-20 mm (uu tien loi van)." },
+  "font": { "family": "Times New Roman", "encoding": "Unicode TCVN 6909:2001", "color": "#000000" },
+  "page_number": { "position": "top-center", "size_pt": 13, "style": "regular", "hide_on_first_page": true },
+  "units": "percent of text area; x from left margin, y from top margin",
+  "blocks": [
+    { "id": "2",  "name": "Ten co quan ban hanh",        "x": [0, 32],  "y": [0, 4],   "align": "center", "row": "header-1", "side": "left" },
+    { "id": "1",  "name": "Quoc hieu va Tieu ngu",        "x": [57, 98], "y": [0, 4],   "align": "center", "row": "header-1", "side": "right" },
+    { "id": "3",  "name": "So, ky hieu",                  "x": [0, 32],  "y": [6, 11],  "align": "center", "row": "header-2", "side": "left",  "below": "2" },
+    { "id": "4",  "name": "Dia danh, ngay thang nam",     "x": [57, 98], "y": [6, 11],  "align": "center", "row": "header-2", "side": "right", "below": "1", "same_line_as": "3" },
+    { "id": "5",  "name": "Ten van ban",                  "x": [36, 74], "y": [13, 17], "align": "center", "below": ["3", "4"] },
+    { "id": "10", "name": "Dau chi muc do mat",           "x": [0, 18],  "y": [19, 24], "align": "left", "below": "5", "optional": true },
+    { "id": "6",  "name": "Noi dung van ban",             "x": [0, 100], "y": [34, 66], "align": "justify", "height": "grows with content" },
+    { "id": "9",  "name": "Noi nhan",                     "x": [0, 24],  "y": [70, 84], "align": "left", "top_aligned_with": "7a", "shape": "L, bottom-right corner cut out for 11" },
+    { "id": "11", "name": "Ky hieu nguoi danh may, so luong ban", "x": [16, 24], "y": [79, 84], "align": "left", "inside_corner_of": "9" },
+    { "id": "7a", "name": "Quyen han, chuc vu nguoi ky",  "x": [49, 98], "y": [69, 74], "align": "center", "below": "6", "side": "right" },
+    { "id": "7c", "name": "Chu ky",                       "x": [71, 88], "y": [78, 83], "align": "center", "below": "7a" },
+    { "id": "8",  "name": "Dau co quan",                  "x": [59, 75], "y": [75, 86], "shape": "circle", "overlaps": "left part of 7c" },
+    { "id": "7b", "name": "Ho va ten nguoi ky",           "x": [52, 96], "y": [86, 91], "align": "center", "below": ["7c", "8"], "centered_with": "7a" }
+  ],
+  "reading_order": ["2", "1", "3", "4", "5", "10", "6", "9", "11", "7a", "7c", "8", "7b"]
+}
+</script>
+<pre id="json-view"></pre>
+<script>
+  try { document.getElementById('json-view').textContent =
+        document.getElementById('layout-spec').textContent.trim(); } catch (e) {}
+</script>
+<noscript><p>Xem khối <code>&lt;script type="application/json" id="layout-spec"&gt;</code> trong mã nguồn.</p></noscript>
+</section>
+
+<section id="ap-dung">
+<h2>7. Cách áp dụng khi dựng văn bản thật</h2>
+<ul>
+  <li><strong>Phần đầu</strong> (ô 1–4): dùng một bảng 2 cột không viền. Cột trái ~40% (ô 2 rồi ô 3), cột phải ~60% (ô 1, Tiêu ngữ, rồi ô 4).
+      Mỗi ô canh giữa trong cột của nó. Hình gốc vẽ cột trái hẹp hơn, nhưng thực tế Quốc hiệu dài nên cột phải cần rộng hơn.</li>
+  <li><strong>Ô 5</strong>: các đoạn canh giữa toàn trang, sau bảng phần đầu.</li>
+  <li><strong>Ô 6</strong>: các đoạn thông thường, canh đều hai lề, thụt đầu dòng 1–1,27 cm.</li>
+  <li><strong>Phần cuối</strong> (ô 7–9, 11): bảng 2 cột không viền. Cột trái ~45% chứa "Nơi nhận:" và danh sách (cỡ 11–12) ở dòng đầu ngang hàng dòng chức vụ;
+      cột phải ~55% chứa 7a (IN HOA đậm), khoảng trống cho chữ ký + dấu (~25–30 mm), rồi 7b (đậm), tất cả canh giữa trong cột.</li>
+  <li><strong>Ô 10</strong>: chỉ chèn khi văn bản có độ mật. <strong>Ô 11</strong>: tuỳ cơ quan, đặt ở cuối khối nơi nhận.</li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>

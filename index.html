@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Z-World Skills</title>
+<meta name="description" content="Hệ thống skill cho AI agent của Z-World Adventure — dùng được với Claude, ChatGPT, Gemini và các agent khác.">
+<style>
+  :root {
+    --bg: #f7f8fa; --surface: #ffffff; --fg: #15191e; --muted: #5d6775; --line: #dde2e8;
+    --accent: #2f5fd0; --accent-soft: #e8efff; --ok: #1f7a4d; --on-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1216; --surface: #171b21; --fg: #e7eaef; --muted: #9aa4b2; --line: #2a3139;
+      --accent: #7ea2ff; --accent-soft: #1c2742; --ok: #5fd39a; --on-accent: #0f1216;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1216; --surface: #171b21; --fg: #e7eaef; --muted: #9aa4b2; --line: #2a3139;
+    --accent: #7ea2ff; --accent-soft: #1c2742; --ok: #5fd39a; --on-accent: #0f1216;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  header.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
+  .brand { font-weight: 700; letter-spacing: -.01em; }
+  nav.top a { margin-left: 16px; text-decoration: none; color: var(--muted); font-size: .95rem; }
+  nav.top a:hover { color: var(--fg); }
+  @media (max-width: 640px) { nav.top { display: none; } }
+  .hero { padding: 56px 0 32px; }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.02em; }
+  .hero p { color: var(--muted); max-width: 680px; font-size: 1.1rem; margin: 0; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .pill { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 4px 12px; font-size: .88rem; font-weight: 600; }
+  section { padding: 28px 0; }
+  h2 { font-size: 1.4rem; margin: 0 0 14px; letter-spacing: -.01em; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .card h3 { margin: 0 0 4px; font-size: 1.1rem; }
+  .card header code { color: var(--muted); font-size: .85rem; }
+  .ver { color: var(--ok); font-size: .8rem; font-weight: 600; margin-left: 6px; }
+  .card p { margin: 10px 0; }
+  .card details { color: var(--muted); font-size: .92rem; }
+  .card details ul { margin: 6px 0 0; padding-left: 18px; }
+  .dl { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn { display: inline-block; padding: 6px 12px; border-radius: 8px; background: var(--accent); color: var(--on-accent); text-decoration: none; font-size: .88rem; font-weight: 600; }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+  pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; overflow-x: auto; font-size: .88rem; line-height: 1.45; margin: 0; }
+  .steps { counter-reset: s; list-style: none; padding: 0; margin: 0; }
+  .steps li { counter-increment: s; position: relative; padding-left: 38px; margin-bottom: 12px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%;
+                      background: var(--accent-soft); color: var(--accent); font-weight: 700; display: grid; place-items: center; font-size: .85rem; }
+  .platform h3 { margin: 0 0 8px; }
+  .platform ul { margin: 0; padding-left: 18px; }
+  .platform li { margin-bottom: 6px; }
+  footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; padding: 20px 0 40px; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">Z-World Skills</span>
+    <nav class="top" aria-label="Điều hướng">
+      <a href="#skill-la-gi">Skill là gì</a>
+      <a href="#danh-sach">Danh sách</a>
+      <a href="#su-dung">Cách dùng</a>
+      <a href="#dong-gop">Viết skill mới</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <h1>Bộ kỹ năng cho AI agent của Z-World Adventure</h1>
+    <p>Mỗi skill đóng gói kiến thức nghiệp vụ — quy định, quy trình, mẫu biểu — thành hướng dẫn mà AI đọc và làm theo được.
+       Viết một lần theo chuẩn mở Agent Skills, dùng trên nhiều nền tảng.</p>
+    <div class="pills"><span class="pill">Claude</span><span class="pill">ChatGPT</span><span class="pill">Gemini</span><span class="pill">Codex / Cursor / Copilot</span><span class="pill"><span id="skill-count">2</span> skill</span></div>
+  </div>
+
+  <section id="skill-la-gi">
+    <h2>Skill là gì?</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Một thư mục, một việc</h3>
+        <p>Skill là thư mục chứa <code>SKILL.md</code>: phần đầu mô tả <em>làm gì, khi nào dùng</em>; phần thân là quy trình, bảng tra nhanh và checklist.</p>
+      </div>
+      <div class="card">
+        <h3>Tải theo nhu cầu</h3>
+        <p>Agent chỉ đọc mô tả ngắn của mọi skill. Khi yêu cầu khớp, nó mới mở <code>SKILL.md</code>, rồi mới tới tài liệu chi tiết trong <code>references/</code>.</p>
+      </div>
+      <div class="card">
+        <h3>Người và máy cùng đọc</h3>
+        <p>Tài liệu tham chiếu viết bằng HTML5 tự chứa: mở bằng trình duyệt cho người, có cấu trúc rõ, kèm JSON cho máy. Hình vẽ luôn được mô tả bằng lời.</p>
+      </div>
+    </div>
+    <pre style="margin-top:16px">skills/&lt;ten-skill&gt;/
+├── SKILL.md        # frontmatter (name, description) + hướng dẫn
+├── references/     # tài liệu tra cứu chi tiết (.html, .md)
+├── assets/         # mẫu, template dùng để tạo đầu ra
+└── scripts/        # mã hỗ trợ (tuỳ chọn)
+dist/&lt;ten-skill&gt;/   # bản đóng gói: .zip cho Claude, .prompt.md cho ChatGPT/Gemini</pre>
+  </section>
+
+  <section id="danh-sach">
+    <h2>Danh sách skill</h2>
+    <div class="grid">
+      <!-- SKILLS:START -->
+      <article class="card" id="skill-the-thuc-van-ban">
+        <header><h3>Thể thức, kỹ thuật trình bày văn bản (NĐ 78/2025/NĐ-CP)</h3><code>the-thuc-van-ban</code> <span class="ver">v1.0.0</span></header>
+        <p>Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật và văn bản hành chính Việt Nam (luật, nghị định, nghị quyết, thông tư, quyết định, lệnh, công văn...) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết công văn, soạn văn bản nhà nước, trình bày Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ, điều khoản, chữ ký, nơi nhận, phụ lục, hoặc kiểm tra một văn bản có đúng thể thức không.</p>
+        <details><summary>Tệp trong skill (5)</summary><ul><li><a href="skills/the-thuc-van-ban/SKILL.md">SKILL.md</a></li><li><a href="skills/the-thuc-van-ban/assets/mau-cong-van.html">assets/mau-cong-van.html</a></li><li><a href="skills/the-thuc-van-ban/assets/mau-van-ban-qppl.html">assets/mau-van-ban-qppl.html</a></li><li><a href="skills/the-thuc-van-ban/references/quy-dinh-chi-tiet.html">references/quy-dinh-chi-tiet.html</a></li><li><a href="skills/the-thuc-van-ban/references/so-do-bo-tri.html">references/so-do-bo-tri.html</a></li></ul></details>
+        <p class="dl">
+          <a class="btn" href="dist/the-thuc-van-ban/the-thuc-van-ban.zip" download>Tải .zip (Claude)</a>
+          <a class="btn" href="dist/the-thuc-van-ban/the-thuc-van-ban.prompt.md" download>Tải .prompt.md (ChatGPT, Gemini…)</a>
+          <a class="btn ghost" href="skills/the-thuc-van-ban/SKILL.md">Xem SKILL.md</a>
+        </p>
+      </article>
+      <article class="card" id="skill-viet-skill">
+        <header><h3>Viết skill chuẩn đa nền tảng</h3><code>viet-skill</code> <span class="ver">v1.0.0</span></header>
+        <p>Tạo mới hoặc chỉnh sửa một skill trong repo ZworldAdventure_Skills theo chuẩn Agent Skills (SKILL.md + references + assets) để dùng được trên Claude (claude.ai, Claude Code, API), ChatGPT (Custom GPT, Codex), Gemini (Gem, Gemini CLI) và các agent khác. Dùng khi người dùng muốn &quot;viết skill&quot;, &quot;tạo skill mới&quot;, &quot;chuyển tài liệu/PDF/quy trình thành skill&quot;, &quot;đóng gói skill cho ChatGPT/Gemini&quot;, hoặc rà soát một skill có đúng chuẩn không.</p>
+        <details><summary>Tệp trong skill (3)</summary><ul><li><a href="skills/viet-skill/SKILL.md">SKILL.md</a></li><li><a href="skills/viet-skill/assets/SKILL.template.md">assets/SKILL.template.md</a></li><li><a href="skills/viet-skill/references/nen-tang.md">references/nen-tang.md</a></li></ul></details>
+        <p class="dl">
+          <a class="btn" href="dist/viet-skill/viet-skill.zip" download>Tải .zip (Claude)</a>
+          <a class="btn" href="dist/viet-skill/viet-skill.prompt.md" download>Tải .prompt.md (ChatGPT, Gemini…)</a>
+          <a class="btn ghost" href="skills/viet-skill/SKILL.md">Xem SKILL.md</a>
+        </p>
+      </article>
+      <!-- SKILLS:END -->
+    </div>
+  </section>
+
+  <section id="su-dung">
+    <h2>Cách dùng trên từng nền tảng</h2>
+    <div class="grid">
+      <div class="card platform">
+        <h3>Claude</h3>
+        <ul>
+          <li><strong>claude.ai / Desktop:</strong> Settings → Capabilities → Skills → Upload, chọn tệp <code>.zip</code>.</li>
+          <li><strong>Claude Code:</strong><br><code>/plugin marketplace add chaunnt/ZworldAdventure_Skills</code><br><code>/plugin install zworld-skills@zworld-skills</code></li>
+          <li>Hoặc chép thư mục skill vào <code>~/.claude/skills/</code>.</li>
+        </ul>
+      </div>
+      <div class="card platform">
+        <h3>ChatGPT</h3>
+        <ul>
+          <li><strong>Custom GPT / Project:</strong> upload tệp <code>.prompt.md</code> vào Knowledge (Project files).</li>
+          <li>Instructions: <em>“Làm việc theo skill trong tệp &lt;tên&gt;.prompt.md ở Knowledge.”</em></li>
+          <li><strong>Codex:</strong> chép thư mục skill vào thư mục skills của Codex.</li>
+        </ul>
+      </div>
+      <div class="card platform">
+        <h3>Gemini</h3>
+        <ul>
+          <li><strong>Gem:</strong> upload <code>.prompt.md</code> vào Knowledge, hoặc dán nội dung vào Instructions.</li>
+          <li><strong>AI Studio:</strong> dán <code>.prompt.md</code> vào System instructions.</li>
+          <li><strong>Gemini CLI:</strong> chép thư mục skill vào thư mục skills của Gemini CLI.</li>
+        </ul>
+      </div>
+      <div class="card platform">
+        <h3>Agent khác</h3>
+        <ul>
+          <li>Clone repo — <code>AGENTS.md</code> ở gốc chỉ cho agent (Cursor, Copilot, Windsurf…) cách tìm và dùng skill.</li>
+          <li>Agent tự viết: đọc <a href="skills.json"><code>skills.json</code></a> để lấy danh sách và mô tả.</li>
+        </ul>
+      </div>
+    </div>
+    <p>Chi tiết: <a href="skills/viet-skill/references/nen-tang.md">skills/viet-skill/references/nen-tang.md</a>.</p>
+  </section>
+
+  <section id="dong-gop">
+    <h2>Viết skill mới</h2>
+    <ol class="steps">
+      <li>Nhờ AI dùng skill <strong>viet-skill</strong> (“tạo skill từ tài liệu này”), hoặc chép <code>skills/viet-skill/assets/SKILL.template.md</code> vào <code>skills/&lt;ten-skill&gt;/SKILL.md</code>.</li>
+      <li>Viết <code>description</code> nêu rõ <em>làm gì</em> và <em>khi nào dùng</em>; đưa chi tiết dài vào <code>references/</code>; mô tả mọi hình vẽ bằng lời.</li>
+      <li>Chạy <code>python3 scripts/build_skills.py</code> để kiểm tra, đóng gói và cập nhật trang này.</li>
+      <li>Commit cả <code>skills/</code>, <code>dist/</code>, <code>skills.json</code>, <code>index.html</code>.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Z-World Adventure · Mã nguồn: <a href="https://github.com/chaunnt/ZworldAdventure_Skills">github.com/chaunnt/ZworldAdventure_Skills</a> · Giấy phép: xem <a href="LICENSE">LICENSE</a></div>
+</footer>
+
+</body>
+</html>

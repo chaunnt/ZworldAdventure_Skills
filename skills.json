@@ -1,0 +1,42 @@
+{
+  "skills": [
+    {
+      "name": "the-thuc-van-ban",
+      "title": "Thể thức, kỹ thuật trình bày văn bản (NĐ 78/2025/NĐ-CP)",
+      "description": "Soạn thảo, định dạng và rà soát thể thức, kỹ thuật trình bày văn bản quy phạm pháp luật và văn bản hành chính Việt Nam (luật, nghị định, nghị quyết, thông tư, quyết định, lệnh, công văn...) theo Nghị định 78/2025/NĐ-CP. Dùng khi người dùng yêu cầu viết công văn, soạn văn bản nhà nước, trình bày Quốc hiệu - Tiêu ngữ, số ký hiệu, tên văn bản, căn cứ, điều khoản, chữ ký, nơi nhận, phụ lục, hoặc kiểm tra một văn bản có đúng thể thức không.",
+      "version": "1.0.0",
+      "language": "vi",
+      "source": "Nghị định số 78/2025/NĐ-CP ngày 01/4/2025 của Chính phủ - Phụ lục thể thức, kỹ thuật trình bày văn bản QPPL (bản đăng trên Báo điện tử Chính phủ, 09/04/2025)",
+      "path": "skills/the-thuc-van-ban",
+      "files": [
+        "SKILL.md",
+        "assets/mau-cong-van.html",
+        "assets/mau-van-ban-qppl.html",
+        "references/quy-dinh-chi-tiet.html",
+        "references/so-do-bo-tri.html"
+      ],
+      "dist": {
+        "claude_zip": "dist/the-thuc-van-ban/the-thuc-van-ban.zip",
+        "prompt": "dist/the-thuc-van-ban/the-thuc-van-ban.prompt.md"
+      }
+    },
+    {
+      "name": "viet-skill",
+      "title": "Viết skill chuẩn đa nền tảng",
+      "description": "Tạo mới hoặc chỉnh sửa một skill trong repo ZworldAdventure_Skills theo chuẩn Agent Skills (SKILL.md + references + assets) để dùng được trên Claude (claude.ai, Claude Code, API), ChatGPT (Custom GPT, Codex), Gemini (Gem, Gemini CLI) và các agent khác. Dùng khi người dùng muốn \"viết skill\", \"tạo skill mới\", \"chuyển tài liệu/PDF/quy trình thành skill\", \"đóng gói skill cho ChatGPT/Gemini\", hoặc rà soát một skill có đúng chuẩn không.",
+      "version": "1.0.0",
+      "language": "vi",
+      "source": "",
+      "path": "skills/viet-skill",
+      "files": [
+        "SKILL.md",
+        "assets/SKILL.template.md",
+        "references/nen-tang.md"
+      ],
+      "dist": {
+        "claude_zip": "dist/viet-skill/viet-skill.zip",
+        "prompt": "dist/viet-skill/viet-skill.prompt.md"
+      }
+    }
+  ]
+}

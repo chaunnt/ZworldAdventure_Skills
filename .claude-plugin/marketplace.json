@@ -1,0 +1,22 @@
+{
+  "name": "zworld-skills",
+  "owner": {
+    "name": "chaunnt"
+  },
+  "metadata": {
+    "description": "Bộ skill cho Z-World Adventure",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "zworld-skills",
+      "description": "Tất cả skill của Z-World Adventure",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/the-thuc-van-ban",
+        "./skills/viet-skill"
+      ]
+    }
+  ]
+}
