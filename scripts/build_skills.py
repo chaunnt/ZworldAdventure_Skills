@@ -100,6 +100,30 @@ def load_categories() -> dict:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
+# Repo public: chặn thông tin cá nhân / data khách hàng cụ thể lọt vào skill.
+PII_PATTERNS = {
+    "email": re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),
+    "số điện thoại": re.compile(r"(?<![\d/])(?:\+84|0)[35789]\d{8}(?![\d/])"),
+    "MST/CCCD/số tài khoản": re.compile(r"(?<![\d/.])\d{10}(?:-\d{3})?(?![\d/])|(?<![\d/.])\d{12}(?![\d/])"),
+}
+PII_ALLOW = re.compile(r"@example\.(com|org|vn)$|^0301234567$|^000000000000$|^0900000000$")
+
+
+def scan_personal_data(skill_dir: Path) -> list[str]:
+    """Báo lỗi nếu tệp trong skill chứa email/SĐT/MST/CCCD thật. Ví dụ giả hợp lệ: ...@example.com, 0301234567, 0900000000."""
+    errs = []
+    for f in skill_dir.rglob("*"):
+        if not f.is_file() or f.name in GENERATED_IN_SKILL or f.suffix.lower() not in TEXT_EXT:
+            continue
+        text = f.read_text(encoding="utf-8", errors="ignore")
+        for label, pat in PII_PATTERNS.items():
+            for m in pat.finditer(text):
+                if not PII_ALLOW.search(m.group(0)):
+                    errs.append(f"{skill_dir.name}: {f.relative_to(skill_dir)} có thể chứa {label} thật "
+                                f"('{m.group(0)}') — repo public, thay bằng dữ liệu giả")
+    return errs
+
+
 def validate(skill_dir: Path) -> tuple[dict, str, list[str]]:
     errors: list[str] = []
     skill_md = skill_dir / "SKILL.md"
@@ -138,6 +162,7 @@ def validate(skill_dir: Path) -> tuple[dict, str, list[str]]:
     extra = set(meta) - ALLOWED_KEYS
     if extra:
         errors.append(f"{skill_dir.name}: khoá frontmatter không hỗ trợ: {', '.join(sorted(extra))}")
+    errors += scan_personal_data(skill_dir)
     lines = body.count("\n")
     if lines > 500:
         print(f"  ! {skill_dir.name}: SKILL.md có {lines} dòng (> 500), nên chuyển bớt sang references/")

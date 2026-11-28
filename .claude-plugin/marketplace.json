@@ -15,7 +15,14 @@
       "strict": false,
       "skills": [
         "./skills/cach-viet-van-ban-quy-pham-phap-luat-ndcp78-2025",
-        "./skills/cach-viet-van-ban-skill-ai-da-nen-tang"
+        "./skills/cach-viet-van-ban-skill-ai-da-nen-tang",
+        "./skills/cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill",
+        "./skills/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan",
+        "./skills/cach-quan-ly-du-lieu-luu-ket-qua-loc-va-du-lieu-tam",
+        "./skills/cach-quan-ly-du-lieu-nhap-bo-du-lieu-vao-kho-kem-readme-chi-muc",
+        "./skills/cach-quan-ly-du-lieu-quy-trinh-tim-kiem-loc-data-khach-hang",
+        "./skills/cach-quan-ly-du-lieu-tra-cuu-chi-muc-truoc-khi-mo-file",
+        "./skills/cach-quan-ly-du-lieu-doc-excel-danh-sach-doanh-nghiep"
       ]
     }
   ]

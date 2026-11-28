@@ -1,0 +1,10 @@
+# Cách tổ chức công việc
+
+> Chia việc phức tạp thành skill nhỏ, ghi lại kinh nghiệm, thao tác Git/repo an toàn để không phải tìm hiểu lại từ đầu.
+
+Mỗi dòng là một skill. Mở SKILL.md của skill phù hợp; chỉ mở references/ khi SKILL.md chỉ dẫn.
+
+## Skills
+
+- [cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill/SKILL.md): [Quy trình] Gốc của mọi việc: tra skill có sẵn, chia việc lớn thành skill đơn lẻ + skill quy trình, ghi kinh nghiệm lại vào repo.
+- [cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/SKILL.md): [Đơn lẻ] Clone repo GitHub depth 3, kiểm tra public/private trước khi lưu data, commit + push an toàn từ bản clone nông.

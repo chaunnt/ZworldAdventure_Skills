@@ -2,5 +2,13 @@
   "cach-viet-van-ban": {
     "title": "Cách viết văn bản",
     "summary": "Soạn thảo, trình bày, rà soát văn bản: văn bản pháp luật, tài liệu nghiệp vụ, tệp skill cho AI."
+  },
+  "cach-to-chuc-cong-viec": {
+    "title": "Cách tổ chức công việc",
+    "summary": "Chia việc phức tạp thành skill nhỏ, ghi lại kinh nghiệm, thao tác Git/repo an toàn để không phải tìm hiểu lại từ đầu."
+  },
+  "cach-quan-ly-du-lieu": {
+    "title": "Cách quản lý dữ liệu",
+    "summary": "Lưu trữ, lập chỉ mục, tra cứu, lọc data khách hàng/đối tác trong kho data private có cấu trúc."
   }
 }

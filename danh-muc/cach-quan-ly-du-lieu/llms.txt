@@ -1,0 +1,13 @@
+# Cách quản lý dữ liệu
+
+> Lưu trữ, lập chỉ mục, tra cứu, lọc data khách hàng/đối tác trong kho data private có cấu trúc.
+
+Mỗi dòng là một skill. Mở SKILL.md của skill phù hợp; chỉ mở references/ khi SKILL.md chỉ dẫn.
+
+## Skills
+
+- [cach-quan-ly-du-lieu-luu-ket-qua-loc-va-du-lieu-tam](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-quan-ly-du-lieu-luu-ket-qua-loc-va-du-lieu-tam/SKILL.md): [Đơn lẻ] Lưu kết quả lọc vào 04_ket-qua-loc/ và data tạm vào 03_du-lieu-tam/ theo thư mục <ngày>_<mô-tả> kèm README.
+- [cach-quan-ly-du-lieu-nhap-bo-du-lieu-vao-kho-kem-readme-chi-muc](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-quan-ly-du-lieu-nhap-bo-du-lieu-vao-kho-kem-readme-chi-muc/SKILL.md): [Đơn lẻ] Nhập file data vào kho private đúng thư mục: tạo README thư mục lá, cập nhật structure.json, build catalog.json, commit.
+- [cach-quan-ly-du-lieu-quy-trinh-tim-kiem-loc-data-khach-hang](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-quan-ly-du-lieu-quy-trinh-tim-kiem-loc-data-khach-hang/SKILL.md): [Quy trình] Tìm/lọc data khách hàng: lấy kho data private → đọc chỉ mục → mở đúng file → lọc → lưu kết quả, không đi tìm lại.
+- [cach-quan-ly-du-lieu-tra-cuu-chi-muc-truoc-khi-mo-file](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-quan-ly-du-lieu-tra-cuu-chi-muc-truoc-khi-mo-file/SKILL.md): [Đơn lẻ] Đọc catalog.json/structure.json để chọn đúng file, tìm giá trị bằng scripts/search.py; KHÔNG mở từng file để dò.
+- [cach-quan-ly-du-lieu-doc-excel-danh-sach-doanh-nghiep](https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-quan-ly-du-lieu-doc-excel-danh-sach-doanh-nghiep/SKILL.md): [Đơn lẻ] Đọc/lọc Excel DS doanh nghiệp kiểu cơ quan nhà nước: tìm dòng tiêu đề, MST dạng chuỗi, cột công thức ra None.

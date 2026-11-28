@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clone và push repo GitHub nông, an toàn | Z-World Skills</title>
+<meta name="description" content="[Đơn lẻ] Clone repo GitHub depth 3, kiểm tra public/private trước khi lưu data, commit + push an toàn từ bản clone nông.">
+<meta name="keywords" content="git clone depth 3, shallow clone, push, repo private, public, lỗi 413, lỗi 429">
+<meta name="robots" content="index, follow, max-snippet:-1">
+<link rel="canonical" href="https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/">
+<link rel="alternate" type="text/plain" title="llms.txt — danh mục cho AI" href="../../llms.txt">
+<link rel="alternate" type="application/json" title="Danh mục skill (JSON)" href="../../skills.json">
+<link rel="sitemap" type="application/xml" href="../../sitemap.xml">
+<link rel="alternate" type="text/markdown" title="SKILL.md" href="SKILL.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Z-World Skills">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="Clone và push repo GitHub nông, an toàn | Z-World Skills">
+<meta property="og:description" content="[Đơn lẻ] Clone repo GitHub depth 3, kiểm tra public/private trước khi lưu data, commit + push an toàn từ bản clone nông.">
+<meta property="og:url" content="https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../static/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://chaunnt.github.io/ZworldAdventure_Skills/"}, {"@type": "ListItem", "position": 2, "name": "Cách tổ chức công việc", "item": "https://chaunnt.github.io/ZworldAdventure_Skills/danh-muc/cach-to-chuc-cong-viec/"}, {"@type": "ListItem", "position": 3, "name": "Clone và push repo GitHub nông, an toàn", "item": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Clone và push repo GitHub nông, an toàn", "name": "cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan", "description": "[Đơn lẻ] Clone repo GitHub depth 3, kiểm tra public/private trước khi lưu data, commit + push an toàn từ bản clone nông.", "abstract": "Clone repo GitHub nông (depth 3), kiểm tra repo public hay private trước khi ghi data, commit và push an toàn từ bản clone nông. Dùng khi cần lấy repo về để làm việc, khi push bị lỗi 413/429, hoặc trước khi lưu dữ liệu nhạy cảm lên một repo.", "inLanguage": "vi", "version": "1.0.0", "keywords": "git clone depth 3, shallow clone, push, repo private, public, lỗi 413, lỗi 429", "url": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/", "isPartOf": {"@type": "WebSite", "name": "Z-World Skills", "url": "https://chaunnt.github.io/ZworldAdventure_Skills/"}, "encoding": {"@type": "MediaObject", "contentUrl": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/SKILL.md", "encodingFormat": "text/markdown"}}</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../../">Z-World Skills</a>
+  <nav aria-label="Điều hướng chính"><a href="../../">Trang chủ</a><a href="../../danh-muc/" aria-current="page">Danh mục</a><a href="../../huong-dan.html">Hướng dẫn</a><a href="../../llms.txt">llms.txt</a></nav>
+</div></header>
+<main class="wrap">
+<ol class="crumbs" aria-label="Breadcrumb"><li><a href="../../">Trang chủ</a></li><li><a href="../../danh-muc/cach-to-chuc-cong-viec/">Cách tổ chức công việc</a></li><li aria-current="page">Clone và push repo GitHub nông, an toàn</li></ol>
+<h1>Clone và push repo GitHub nông, an toàn</h1>
+<p class="lead">[Đơn lẻ] Clone repo GitHub depth 3, kiểm tra public/private trước khi lưu data, commit + push an toàn từ bản clone nông.</p>
+<div class="btns">
+  <a class="btn" href="SKILL.md" type="text/markdown">Đọc SKILL.md</a>
+  <a class="btn ghost" href="../../dist/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan.zip" download>Tải .zip (Claude)</a>
+  <a class="btn ghost" href="../../dist/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan/cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan.prompt.md" download>Tải .prompt.md (ChatGPT, Gemini…)</a>
+</div>
+<section aria-labelledby="h-when"><h2 id="h-when">Khi nào dùng</h2><p>Clone repo GitHub nông (depth 3), kiểm tra repo public hay private trước khi ghi data, commit và push an toàn từ bản clone nông. Dùng khi cần lấy repo về để làm việc, khi push bị lỗi 413/429, hoặc trước khi lưu dữ liệu nhạy cảm lên một repo.</p></section>
+<div class="grid">
+  <section class="card" aria-labelledby="h-order"><h2 id="h-order">Thứ tự đọc cho AI</h2><ol><li><a href="SKILL.md"><code>SKILL.md</code></a></li></ol></section>
+  <section class="card" aria-labelledby="h-outline"><h2 id="h-outline">Mục lục SKILL.md</h2><ul><li>Các bước</li><li>Lỗi hay gặp</li></ul></section>
+  <section class="card" aria-labelledby="h-meta"><h2 id="h-meta">Thông tin</h2><dl class="kv"><dt>Tên kỹ thuật</dt><dd><code>cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan</code></dd><dt>Phiên bản</dt><dd>1.0.0</dd><dt>Danh mục</dt><dd><a href="../../danh-muc/cach-to-chuc-cong-viec/">Cách tổ chức công việc</a></dd><dt>Từ khoá</dt><dd>git clone depth 3, shallow clone, push, repo private, public, lỗi 413, lỗi 429</dd></dl></section>
+  <section class="card" aria-labelledby="h-files"><h2 id="h-files">Tệp khác trong skill</h2><ul><li><a href="SKILL.md"><code>SKILL.md</code></a></li></ul></section>
+</div>
+</main>
+<footer><div class="wrap">Z-World Skills · <a href="https://github.com/chaunnt/ZworldAdventure_Skills">Mã nguồn GitHub</a> ·
+<a href="../../llms.txt">llms.txt</a> · <a href="../../skills.json">skills.json</a> · <a href="../../sitemap.xml">sitemap.xml</a></div></footer>
+</body>
+</html>

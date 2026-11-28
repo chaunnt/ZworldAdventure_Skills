@@ -116,6 +116,7 @@ Quy tắc viết:
 - Không phụ thuộc công cụ riêng của một nền tảng (không viết "dùng tool X của Claude"). Nếu cần, ghi
   "nếu môi trường có thể chạy Python thì chạy `scripts/...`; nếu không, làm thủ công theo bước ...".
 - Không bịa dữ liệu; chỉ rõ chỗ cần người dùng cung cấp bằng `[...]`.
+- **Không làm lộ thông tin cá nhân** (repo public): không ghi tên, MST, CCCD, SĐT, email, địa chỉ của một người hay doanh nghiệp cụ thể. Ví dụ dùng dữ liệu giả (`CÔNG TY ABC`, `0301234567`, `...@example.com`). Build sẽ báo lỗi nếu phát hiện.
 - Ghi rõ chênh lệch/mâu thuẫn trong tài liệu nguồn và lựa chọn ưu tiên.
 
 ## Chuyển tài liệu (PDF, ảnh, quy định) thành skill
