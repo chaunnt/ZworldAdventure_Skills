@@ -60,7 +60,7 @@
       "category": "cach-to-chuc-cong-viec",
       "summary": "[Quy trình] Gốc của mọi việc: tra skill có sẵn, chia việc lớn thành skill đơn lẻ + skill quy trình, ghi kinh nghiệm lại vào repo.",
       "keywords": "chia nhỏ công việc, kinh nghiệm, skill đơn lẻ, skill quy trình, tối ưu công việc, không tìm hiểu lại",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "skill_md": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill/SKILL.md",
       "page": "https://chaunnt.github.io/ZworldAdventure_Skills/skills/cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill/",
       "claude_zip": "https://chaunnt.github.io/ZworldAdventure_Skills/dist/cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill/cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill.zip",

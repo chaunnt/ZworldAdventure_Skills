@@ -3,7 +3,7 @@ name: cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill
 description: Quy trình gốc cho mọi việc của agent với Z-World. Trước khi làm thì tra repo skill xem đã có cách làm chưa. Việc phức tạp thì chia thành các việc nhỏ, mỗi việc nhỏ một skill đơn lẻ, và có một skill quy trình ghép chúng lại. Làm xong thì ghi kinh nghiệm vào repo ZworldAdventure_Skills. Dùng khi bắt đầu một việc mới, khi gặp việc nhiều bước, khi người dùng nói "lưu kinh nghiệm", "tạo skill", "đừng tìm hiểu lại từ đầu", "tối ưu công việc".
 license: Xem LICENSE ở thư mục gốc repo
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   language: vi
   category: cach-to-chuc-cong-viec
   level: quy-trinh
@@ -27,7 +27,7 @@ Tiền tố summary hiện ngay trong `llms.txt`, nhờ vậy chỉ cần lướ
 
 ## Quy trình bắt đầu mọi việc
 
-1. Clone repo skill nông (xem `cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan`), đọc `llms.txt`. **Không mở lần lượt từng SKILL.md.**
+1. Clone repo skill nông (xem `cach-to-chuc-cong-viec-clone-push-repo-github-nong-an-toan`), đọc `llms.txt`. Việc cần viết code thì đọc thêm `index.json` của Vault. **Không mở lần lượt từng SKILL.md.**
 2. Có skill quy trình khớp việc → làm theo nó. Chỉ có skill đơn lẻ khớp một phần → dùng các skill đó, phần còn thiếu thì tự làm.
 3. Chưa có gì → làm việc như bình thường, nhưng ghi chép lại: các bước, lệnh chạy được, lỗi đã gặp và cách sửa.
 
@@ -37,7 +37,8 @@ Tiền tố summary hiện ngay trong `llms.txt`, nhờ vậy chỉ cần lướ
 2. Nếu việc có từ 2 thao tác trở lên → viết thêm skill quy trình, liệt kê skill đơn lẻ trong `metadata.uses` và mô tả thứ tự gọi.
 3. Đặt tên theo quy chuẩn trong `cach-viet-van-ban-skill-ai-da-nen-tang`. Tên phải **cụ thể, đọc là hiểu**, dài 5-15 từ cũng được, tối đa 64 ký tự. Tránh các từ bị cấm: `moi`, `chung`, `test`, `misc`, `tool`, `helper`.
 4. Ghi vào skill những gì **chỉ có được sau khi làm thật**: lỗi gặp phải, giới hạn môi trường, cách đã chạy được. Đừng chép lại kiến thức phổ thông.
-5. Chạy `python3 scripts/build_skills.py`, sau đó commit và push.
+5. **Tool tự viết** (py, node, bash...) dùng lại được → lưu vào repo **private** `chaunnt/ZWorldAdventure_Vault`: tổng quát hoá, thêm header `@mo-ta/@cach-dung`, đặt tên file cụ thể, build `index.json` (xem `CLAUDE.md` của Vault). Trong skill chỉ ghi đường dẫn tool trong Vault, không chép lại code. Trước khi viết script mới, đọc `index.json` của Vault xem đã có tool chưa.
+6. Chạy `python3 scripts/build_skills.py`, sau đó commit và push.
 
 ## Ranh giới quan trọng: không làm lộ thông tin cá nhân
 

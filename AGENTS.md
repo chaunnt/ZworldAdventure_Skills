@@ -28,6 +28,7 @@ Repo này là thư viện **skill** theo chuẩn Agent Skills. Đọc từ nông
 - Bắt đầu mọi việc: đọc skill `cach-to-chuc-cong-viec-chia-nho-viec-va-ghi-kinh-nghiem-skill`. Kết thúc việc: ghi kinh nghiệm thành skill **đơn lẻ** (`metadata.level: don-le`, summary bắt đầu bằng `[Đơn lẻ]`) và skill **quy trình** (`level: quy-trinh`, `uses:` liệt kê skill đơn lẻ, summary bắt đầu bằng `[Quy trình]`).
 - Tên skill phải cụ thể, đọc là hiểu (5-15 từ không dấu cũng được, ≤ 64 ký tự).
 - **Repo public, không làm lộ thông tin cá nhân**: không ghi tên, MST, CCCD, SĐT, email, địa chỉ của người hay doanh nghiệp cụ thể, cũng không ghi token hay mật khẩu. Ví dụ dùng dữ liệu giả. Data thật để ở kho private `chaunnt/ZWorldAdventur_Data`.
+- **Tool tự viết** (py, node, bash...) lưu ở repo private `chaunnt/ZWorldAdventure_Vault` (tra `index.json` trước khi viết mới). Skill chỉ trỏ tới đường dẫn tool, không chép code.
 
 ## Khi chỉnh sửa repo
 
